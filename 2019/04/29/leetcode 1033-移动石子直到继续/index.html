@@ -96,17 +96,17 @@
 
 
 
-  <meta name="description" content="题目：公司计划面试 2N 人。第 i 人飞往 A 市的费用为 costs[i][0]，飞往 B 市的费用为 costs[i][1]。 返回将每个人都飞到某座城市的最低费用，要求每个城市都有 N 人抵达。 示例：输入：[[10,20],[30,200],[400,50],[30,20]]输出：110解释：第一个人去 A 市，费用为 10。第二个人去 A 市，费用为 30。第三个人去 B 市，费用为">
+  <meta name="description" content="题目：三枚石子放置在数轴上，位置分别为 a，b，c。 每一回合，我们假设这三枚石子当前分别位于位置 x, y, z 且 x &amp;lt; y &amp;lt; z。从位置 x 或者是位置 z 拿起一枚石子，并将该石子移动到某一整数位置 k 处，其中 x &amp;lt; k &amp;lt; z 且 k != y。 当你无法进行任何移动时，即，这些石子的位置连续时，游戏结束。 要使游戏结束，你可以执行的最小和最大移动次数分别">
 <meta property="og:type" content="article">
-<meta property="og:title" content="leetcode 1029.两地调度">
-<meta property="og:url" content="http://www.flyingkw.com/2019/04/25/leetcode 1029-两地调度/index.html">
+<meta property="og:title" content="leetcode 1033.移动石子直到继续">
+<meta property="og:url" content="http://www.flyingkw.com/2019/04/29/leetcode 1033-移动石子直到继续/index.html">
 <meta property="og:site_name" content="张珂玮的博客">
-<meta property="og:description" content="题目：公司计划面试 2N 人。第 i 人飞往 A 市的费用为 costs[i][0]，飞往 B 市的费用为 costs[i][1]。 返回将每个人都飞到某座城市的最低费用，要求每个城市都有 N 人抵达。 示例：输入：[[10,20],[30,200],[400,50],[30,20]]输出：110解释：第一个人去 A 市，费用为 10。第二个人去 A 市，费用为 30。第三个人去 B 市，费用为">
+<meta property="og:description" content="题目：三枚石子放置在数轴上，位置分别为 a，b，c。 每一回合，我们假设这三枚石子当前分别位于位置 x, y, z 且 x &amp;lt; y &amp;lt; z。从位置 x 或者是位置 z 拿起一枚石子，并将该石子移动到某一整数位置 k 处，其中 x &amp;lt; k &amp;lt; z 且 k != y。 当你无法进行任何移动时，即，这些石子的位置连续时，游戏结束。 要使游戏结束，你可以执行的最小和最大移动次数分别">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-04-25T09:05:11.456Z">
+<meta property="og:updated_time" content="2019-05-06T09:05:02.931Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="leetcode 1029.两地调度">
-<meta name="twitter:description" content="题目：公司计划面试 2N 人。第 i 人飞往 A 市的费用为 costs[i][0]，飞往 B 市的费用为 costs[i][1]。 返回将每个人都飞到某座城市的最低费用，要求每个城市都有 N 人抵达。 示例：输入：[[10,20],[30,200],[400,50],[30,20]]输出：110解释：第一个人去 A 市，费用为 10。第二个人去 A 市，费用为 30。第三个人去 B 市，费用为">
+<meta name="twitter:title" content="leetcode 1033.移动石子直到继续">
+<meta name="twitter:description" content="题目：三枚石子放置在数轴上，位置分别为 a，b，c。 每一回合，我们假设这三枚石子当前分别位于位置 x, y, z 且 x &amp;lt; y &amp;lt; z。从位置 x 或者是位置 z 拿起一枚石子，并将该石子移动到某一整数位置 k 处，其中 x &amp;lt; k &amp;lt; z 且 k != y。 当你无法进行任何移动时，即，这些石子的位置连续时，游戏结束。 要使游戏结束，你可以执行的最小和最大移动次数分别">
 
 
 
@@ -114,7 +114,7 @@
 
   
   
-  <link rel="canonical" href="http://www.flyingkw.com/2019/04/25/leetcode 1029-两地调度/">
+  <link rel="canonical" href="http://www.flyingkw.com/2019/04/29/leetcode 1033-移动石子直到继续/">
 
 
 
@@ -124,7 +124,7 @@
   };
 </script>
 
-  <title>leetcode 1029.两地调度 | 张珂玮的博客</title>
+  <title>leetcode 1033.移动石子直到继续 | 张珂玮的博客</title>
   
 
 
@@ -352,7 +352,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.flyingkw.com/2019/04/25/leetcode 1029-两地调度/">
+    <link itemprop="mainEntityOfPage" href="http://www.flyingkw.com/2019/04/29/leetcode 1033-移动石子直到继续/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="张珂玮">
@@ -369,7 +369,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">leetcode 1029.两地调度
+          <h1 class="post-title" itemprop="name headline">leetcode 1033.移动石子直到继续
 
               
             
@@ -395,12 +395,24 @@
                 
               
 
-              <time title="创建时间：2019-04-25 16:14:20 / 修改时间：17:05:11" itemprop="dateCreated datePublished" datetime="2019-04-25T16:14:20+08:00">2019-04-25</time>
+              <time title="创建时间：2019-04-29 17:14:07" itemprop="dateCreated datePublished" datetime="2019-04-29T17:14:07+08:00">2019-04-29</time>
             
 
             
               
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-05-06 17:05:02" itemprop="dateModified" datetime="2019-05-06T17:05:02+08:00">2019-05-06</time>
               
             
           </span>
@@ -436,8 +448,8 @@
                 </span>
             
                 <span class="post-meta-item-text">评论数：</span>
-                <a href="/2019/04/25/leetcode 1029-两地调度/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2019/04/25/leetcode 1029-两地调度/" itemprop="commentCount"></span>
+                <a href="/2019/04/29/leetcode 1033-移动石子直到继续/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/04/29/leetcode 1033-移动石子直到继续/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -465,59 +477,45 @@
       
 
       
-        <h3 id="题目："><a href="#题目：" class="headerlink" title="题目："></a>题目：</h3><p>公司计划面试 2N 人。第 i 人飞往 A 市的费用为 costs[i][0]，飞往 B 市的费用为 costs[i][1]。</p>
-<p>返回将每个人都飞到某座城市的最低费用，要求每个城市都有 N 人抵达。</p>
-<h3 id="示例："><a href="#示例：" class="headerlink" title="示例："></a>示例：</h3><p>输入：[[10,20],[30,200],[400,50],[30,20]]<br>输出：110<br>解释：<br>第一个人去 A 市，费用为 10。<br>第二个人去 A 市，费用为 30。<br>第三个人去 B 市，费用为 50。<br>第四个人去 B 市，费用为 20。</p>
-<p>最低总费用为 10 + 30 + 50 + 20 = 110，每个城市都有一半的人在面试。</p>
-<h3 id="提示："><a href="#提示：" class="headerlink" title="提示："></a>提示：</h3><ol>
-<li>1 &lt;= costs.length &lt;= 100</li>
-<li>costs.length 为偶数</li>
-<li>1 &lt;= costs[i][0], costs[i][1] &lt;= 1000</li>
+        <h3 id="题目："><a href="#题目：" class="headerlink" title="题目："></a>题目：</h3><p>三枚石子放置在数轴上，位置分别为 a，b，c。</p>
+<p>每一回合，我们假设这三枚石子当前分别位于位置 x, y, z 且 x &lt; y &lt; z。从位置 x 或者是位置 z 拿起一枚石子，并将该石子移动到某一整数位置 k 处，其中 x &lt; k &lt; z 且 k != y。</p>
+<p>当你无法进行任何移动时，即，这些石子的位置连续时，游戏结束。</p>
+<p>要使游戏结束，你可以执行的最小和最大移动次数分别是多少？ 以长度为 2 的数组形式返回答案：answer = [minimum_moves, maximum_moves]</p>
+<h3 id="示例："><a href="#示例：" class="headerlink" title="示例："></a>示例：</h3><p>示例 1：</p>
+<pre><code>输入：a = 1, b = 2, c = 5
+输出：[1, 2]
+解释：将石子从 5 移动到 4 再移动到 3，或者我们可以直接将石子移动到 3。
+</code></pre><p>示例 2：</p>
+<pre><code>输入：a = 4, b = 3, c = 2
+输出：[0, 0]
+解释：我们无法进行任何移动。
+</code></pre><h3 id="提示："><a href="#提示：" class="headerlink" title="提示："></a>提示：</h3><ol>
+<li>1 &lt;= a &lt;= 100</li>
+<li>1 &lt;= b &lt;= 100</li>
+<li>1 &lt;= c &lt;= 100</li>
+<li>a != b, b != c, c != a</li>
 </ol>
-<h3 id="分析："><a href="#分析：" class="headerlink" title="分析："></a>分析：</h3><p>将每个人飞往两地的费用相减，取绝对值，然后按照这个绝对值从大到小排列，按照这个顺序安排前往两地的人，直到其中一个人数达到N，剩下的全部前往另一地</p>
+<h3 id="分析："><a href="#分析：" class="headerlink" title="分析："></a>分析：</h3><p>石头最多的移法就是一格一格移，石头最少的移法，如果两个石头中间刚好空一格，就将另一块石头移过来，不然就移动两次</p>
 <h3 id="代码："><a href="#代码：" class="headerlink" title="代码："></a>代码：</h3><pre><code>class Solution {
 public:
-    static bool px(vector&lt;int&gt;&amp; a, vector&lt;int&gt;&amp; b){
-        int a1 = a[0] - a[1];
-        int b1 = b[0] - b[1];
-        if(a1 &lt; 0){
-            a1 *= (-1);
+    vector&lt;int&gt; numMovesStones(int a, int b, int c) {
+        vector&lt;int&gt; vi;
+        vi.push_back(a);
+        vi.push_back(b);
+        vi.push_back(c);
+        sort(vi.begin(), vi.end());
+        vector&lt;int&gt; ret;
+        ret.push_back(0);
+        ret.push_back(vi[1]-vi[0]-1 + vi[2]-vi[1]-1);
+        if(vi[0] + 1 == vi[1] &amp;&amp; vi[1] + 1 == vi[2]){
+            return ret;
         }
-        if(b1 &lt; 0){
-            b1 *= (-1);
+        if(vi[0] + 1 == vi[1] || vi[1] + 1 == vi[2] || vi[0] + 2 == vi[1] || vi[1] + 2 == vi[2]){
+            ret[0]++;
+            return ret;
         }
-        return a1 &gt; b1;
-    }
-    int twoCitySchedCost(vector&lt;vector&lt;int&gt;&gt;&amp; costs) {
-        sort(costs.begin(), costs.end(), px);
-        int a = 0;
-        int b = 0;
-        int m = 0;
-        for(int i = 0; i &lt; costs.size(); i++){
-            cout &lt;&lt; costs[i][0] - costs[i][1] &lt;&lt; &quot;\n&quot;;
-            if(costs[i][0] &lt; costs[i][1]){
-                if(a &lt; costs.size()/2){
-                    a++;
-                    m += costs[i][0];
-                }
-                else{
-                    b++;
-                    m += costs[i][1];
-                }
-            }
-            else if(costs[i][0] &gt;= costs[i][1]){
-                if(b &lt; costs.size()/2){
-                    b++;
-                    m += costs[i][1];
-                }
-                else{
-                    a++;
-                    m += costs[i][0];
-                }
-            }
-
-        }
-        return m;
+        ret[0]+= 2;
+        return ret;
     }
 };
 </code></pre>
@@ -550,8 +548,8 @@ public:
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/04/18/leetcode 1028-从先序遍历还原二叉树/" rel="next" title="leetcode 1028.从先序遍历还原二叉树">
-                <i class="fa fa-chevron-left"></i> leetcode 1028.从先序遍历还原二叉树
+              <a href="/2019/04/25/leetcode 1031-两个非重叠子数组的最大和 - 副本/" rel="next" title="leetcode 1031-两个非重叠子数组的最大和">
+                <i class="fa fa-chevron-left"></i> leetcode 1031-两个非重叠子数组的最大和
               </a>
             
           </div>
@@ -560,8 +558,8 @@ public:
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2019/04/25/leetcode 1030-距离顺序排列矩阵单元格/" rel="prev" title="leetcode 1030.距离顺序排列矩阵单元格">
-                leetcode 1030.距离顺序排列矩阵单元格 <i class="fa fa-chevron-right"></i>
+              <a href="/2019/04/29/leetcode 1034-边框着色/" rel="prev" title="leetcode 1034.边框着色">
+                leetcode 1034.边框着色 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>

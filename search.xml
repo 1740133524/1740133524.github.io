@@ -1,6 +1,38 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[leetcode 1054. 距离相等的条形码]]></title>
+    <url>%2F2019%2F05%2F27%2Fleetcode%201054.%20%E8%B7%9D%E7%A6%BB%E7%9B%B8%E7%AD%89%E7%9A%84%E6%9D%A1%E5%BD%A2%E7%A0%81%2F</url>
+    <content type="text"><![CDATA[题目：在一个仓库里，有一排条形码，其中第 i 个条形码为 barcodes[i]。 请你重新排列这些条形码，使其中两个相邻的条形码 不能 相等。 你可以返回任何满足该要求的答案，此题保证存在答案。 示例：示例 1： 输入：[1,1,1,2,2,2] 输出：[2,1,2,1,2,1] 示例 2： 输入：[1,1,1,1,2,2,3,3] 输出：[1,3,1,3,2,1,2,1] 提示： 1 &lt;= barcodes.length &lt;= 10000 1 &lt;= barcodes[i] &lt;= 10000 分析：将数组存入map，找出里面相同数量最多的字符，从这种字符开始排列（目的是为了防止字符串数量为单数，并且当前字符所占长度为字符串一半以上），两个字符之间空一格，当排列到字符串长度时，从1开始填入之前的空格 代码：class Solution {public: vector rearrangeBarcodes(vector&amp; barcodes) { vector ret(barcodes.size()); map&lt;int, int&gt; mii; for(int i = 0; i &lt; barcodes.size(); i++){ mii[barcodes[i]]++; } int max = 0; int z = 0; for(auto m = mii.begin(); m != mii.end(); m++){ if(max &lt; m-&gt;second){ max = m-&gt;second; z = m-&gt;first; } } int x = 0; for(int i = 0; i &lt; mii[z]; i++){ ret[x] = z; x += 2; if(x &gt;= barcodes.size()){ x = 1; } } mii[z] = 0; for(auto m = mii.begin(); m != mii.end(); m++){ for(int i = 0; i &lt; m-&gt;second; i++){ ret[x] = m-&gt;first; x += 2; if(x &gt;= barcodes.size()){ x = 1; } } } return ret; } }; 题目地址：https://leetcode-cn.com/contest/weekly-contest-138/problems/distant-barcodes/]]></content>
+      <categories>
+        <category>leetcode题目</category>
+      </categories>
+  </entry>
+  <entry>
+    <title><![CDATA[leetcode 1053. 交换一次的先前排列]]></title>
+    <url>%2F2019%2F05%2F27%2Fleetcode%201053.%20%E4%BA%A4%E6%8D%A2%E4%B8%80%E6%AC%A1%E7%9A%84%E5%85%88%E5%89%8D%E6%8E%92%E5%88%97%2F</url>
+    <content type="text"><![CDATA[题目：给你一个正整数的数组 A（其中的元素不一定完全不同），请你返回可在 一次交换（交换两数字 A[i] 和 A[j] 的位置）后得到的、按字典序排列小于 A 的最大可能排列。 如果无法这么操作，就请返回原数组。 示例：示例 1： 输入：[3,2,1] 输出：[3,1,2] 解释： 交换 2 和 1 示例 2： 输入：[1,1,5] 输出：[1,1,5] 解释： 这已经是最小排列 示例 3： 输入：[1,9,4,6,7] 输出：[1,7,4,6,9] 解释： 交换 9 和 7 示例 4： 输入：[3,1,1,3] 输出：[1,3,1,3] 解释： 交换 1 和 3 提示： 1 &lt;= A.length &lt;= 10000 1 &lt;= A[i] &lt;= 10000 分析：从后往前遍历找到第一个大于前一个的数字，然后从当前数字向后遍历，找到小于这个数字的最大的一个数，将两个数交换 代码：class Solution { public: vector&lt;int&gt; prevPermOpt1(vector&lt;int&gt;&amp; A) { for(int i = A.size()-2; i &gt;= 0; i--){ if(A[i] &gt; A[i+1]){ cout &lt;&lt; i &lt;&lt; &quot;\n&quot;; for(int j = i+1; i &lt; A.size(); j++){ if(j == A.size() || A[j] &gt;= A[i]){ int z = A[i]; A[i] = A[j-1]; A[j-1] = z; cout &lt;&lt; i &lt;&lt; &quot; &quot; &lt;&lt; j; return A; } } } } return A; } }; 题目地址:https://leetcode-cn.com/contest/weekly-contest-138/problems/previous-permutation-with-one-swap/]]></content>
+      <categories>
+        <category>leetcode题目</category>
+      </categories>
+  </entry>
+  <entry>
+    <title><![CDATA[leetcode 1052. 爱生气的书店老板]]></title>
+    <url>%2F2019%2F05%2F27%2Fleetcode%201052.%20%E7%88%B1%E7%94%9F%E6%B0%94%E7%9A%84%E4%B9%A6%E5%BA%97%E8%80%81%E6%9D%BF%2F</url>
+    <content type="text"><![CDATA[题目：今天，书店老板有一家店打算试营业 customers.length 分钟。每分钟都有一些顾客（customers[i]）会进入书店，所有这些顾客都会在那一分钟结束后离开。 在某些时候，书店老板会生气。 如果书店老板在第 i 分钟生气，那么 grumpy[i] = 1，否则 grumpy[i] = 0。 当书店老板生气时，那一分钟的顾客就会不满意，不生气则他们是满意的。 书店老板知道一个秘密技巧，能抑制自己的情绪，可以让自己连续 X 分钟不生气，但却只能使用一次。 请你返回这一天营业下来，最多有多少客户能够感到满意的数量。 示例：输入：customers = [1,0,1,2,1,1,7,5], grumpy = [0,1,0,1,0,1,0,1], X = 3 输出：16 解释： 书店老板在最后 3 分钟保持冷静。 感到满意的最大客户数量 = 1 + 1 + 1 + 1 + 7 + 5 = 16. 提示： 1 &lt;= X &lt;= customers.length == grumpy.length &lt;= 20000 0 &lt;= customers[i] &lt;= 1000 0 &lt;= grumpy[i] &lt;= 1 分析：先计算不使用秘密技巧时的满意数量，然后使用满意技巧，计算每次使用满意技巧后最多的满意数量 代码：class Solution { public: int maxSatisfied(vector&lt;int&gt;&amp; customers, vector&lt;int&gt;&amp; grumpy, int X) { int z = 0; int max = 0; for(int i = 0; i &lt; customers.size(); i++){ if(grumpy[i] == 0){ z += customers[i]; } } max = z; for(int i = 0; i &lt; customers.size(); i++){ if(i &lt; X){ if(grumpy[i] == 1){ z += customers[i]; } } else{ if(grumpy[i] == 1){ z += customers[i]; } if(grumpy[i - X] == 1){ z -= customers[i-X]; } } max = max &gt; z ? max : z; } return max; } }; 题目地址https://leetcode-cn.com/contest/weekly-contest-138/problems/grumpy-bookstore-owner/]]></content>
+      <categories>
+        <category>leetcode题目</category>
+      </categories>
+  </entry>
+  <entry>
+    <title><![CDATA[leetcode 1051. 高度检查器]]></title>
+    <url>%2F2019%2F05%2F27%2Fleetcode%201051.%20%E9%AB%98%E5%BA%A6%E6%A3%80%E6%9F%A5%E5%99%A8%2F</url>
+    <content type="text"><![CDATA[题目：学校在拍年度纪念照时，一般要求学生按照 非递减 的高度顺序排列。 请你返回至少有多少个学生没有站在正确位置数量。该人数指的是：能让所有学生以 非递减 高度排列的必要移动人数。 示例：输入：[1,1,4,2,1,3] 输出：3 解释： 高度为 4、3 和最后一个 1 的学生，没有站在正确的位置。 提示： 1 &lt;= heights.length &lt;= 100 1 &lt;= heights[i] &lt;= 100 分析：直接排序，将排序后的列表和排序前的列表进行比较，统计不同的数量 代码：class Solution { public: int heightChecker(vector&lt;int&gt;&amp; heights) { vector&lt;int&gt; vi = heights; sort(vi.begin(), vi.end()); int ret = 0; for(int i = 0; i &lt; heights.size(); i++){ if(vi[i] != heights[i]){ ret++; } } return ret; } }; 题目地址:https://leetcode-cn.com/contest/weekly-contest-138/problems/height-checker/]]></content>
+      <categories>
+        <category>leetcode题目</category>
+      </categories>
+  </entry>
+  <entry>
     <title><![CDATA[leetcode 1048. 最长字符串链]]></title>
     <url>%2F2019%2F05%2F20%2Fleetcode%201048.%20%E6%9C%80%E9%95%BF%E5%AD%97%E7%AC%A6%E4%B8%B2%E9%93%BE%2F</url>
     <content type="text"><![CDATA[题目：给出一个单词列表，其中每个单词都由小写英文字母组成。 如果我们可以在 word1 的任何地方添加一个字母使其变成 word2，那么我们认为 word1 是 word2 的前身。例如，”abc” 是 “abac” 的前身。 词链是单词 [word_1, word_2, …, word_k] 组成的序列，k &gt;= 1，其中 word_1 是 word_2 的前身，word_2 是 word_3 的前身，依此类推。 从给定单词列表 words 中选择单词组成词链，返回词链的最长可能长度。 示例：输入：[&quot;a&quot;,&quot;b&quot;,&quot;ba&quot;,&quot;bca&quot;,&quot;bda&quot;,&quot;bdca&quot;] 输出：4 解释：最长单词链之一为 &quot;a&quot;,&quot;ba&quot;,&quot;bda&quot;,&quot;bdca&quot;。 提示： 1 &lt;= words.length &lt;= 1000 1 &lt;= words[i].length &lt;= 16 words[i] 仅由小写英文字母组成。 分析：先将字符串按长度排列 设计一个函数，判断是否两个字符串有前后关系 使用动态规划 w[i] 和 w[j] 为前后关系 初始全部赋值为0 转移方程为 w[j] = w[j] 和 w[i]+1 中大的那个数 代码：bool cmp(string str1, string str2){ return str2.size() &gt; str1.size(); } class Solution { public: bool isFront(string str1, string str2){ if(str2.size() - str1.size() != 1){ return false; } int i = 0; int j = 0; while(i &lt; str1.size() &amp;&amp; j &lt; str2.size() &amp;&amp; str1[i] == str2[i]){ i++; j++; } j++; while(i &lt; str1.size() &amp;&amp; j &lt; str2.size()){ if(str1[i] != str2[j]){ return false; } i++; j++; } return true; } int longestStrChain(vector&lt;string&gt;&amp; words) { int max = 0; int w[words.size()] = {0}; sort(words.begin(), words.end(), cmp); for(int i = 0; i &lt; words.size(); i++){ for(int j = i + 1; j &lt; words.size(); j++){ if(words[j].size() - words[i].size() &lt; 1){ continue; } else if(words[j].size() - words[i].size() &gt; 1){ break; } if(isFront(words[i], words[j])){ w[j] = w[j] &gt; w[i]+1 ? w[j] : w[i]+1; max = max &gt; w[j] ? max : w[j]; } } } return max+1; } };]]></content>

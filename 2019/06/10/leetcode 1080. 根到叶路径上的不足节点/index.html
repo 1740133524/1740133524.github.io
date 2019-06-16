@@ -96,17 +96,17 @@
 
 
 
-  <meta name="description" content="题目：给定一个整数数组 A，返回 A 中最长等差子序列的长度。 回想一下，A 的子序列是列表 A[i_1], A[i_2], ..., A[i_k] 其中0 &amp;lt;= i_1 &amp;lt; i_2 &amp;lt; ... &amp;lt; i_k &amp;lt;= A.length - 1。并且如果 B[i+1] - B[i]( 0 &amp;lt;= i &amp;lt; B.length - 1) 的值都相同，那么序列 B 是等差">
+  <meta name="description" content="题目：给定一棵二叉树的根 root，请你考虑它所有 从根到叶的路径：从根到任何叶的路径。（所谓一个叶子节点，就是一个没有子节点的节点） 假如通过节点 node 的每种可能的 “根-叶” 路径上值的总和全都小于给定的 limit，则该节点被称之为「不足节点」，需要被删除。 请你删除所有不足节点，并返回生成的二叉树的根。 示例：示例 1： 输入：root = [1,2,3,4,-99,-99,7,8,">
 <meta property="og:type" content="article">
-<meta property="og:title" content="leetcode 1027.最长等差数列">
-<meta property="og:url" content="http://www.flyingkw.com/2019/04/18/leetcode 1027-最长等差数列/index.html">
+<meta property="og:title" content="leetcode 1080. 根到叶路径上的不足节点">
+<meta property="og:url" content="http://www.flyingkw.com/2019/06/10/leetcode 1080. 根到叶路径上的不足节点/index.html">
 <meta property="og:site_name" content="张珂玮的博客">
-<meta property="og:description" content="题目：给定一个整数数组 A，返回 A 中最长等差子序列的长度。 回想一下，A 的子序列是列表 A[i_1], A[i_2], ..., A[i_k] 其中0 &amp;lt;= i_1 &amp;lt; i_2 &amp;lt; ... &amp;lt; i_k &amp;lt;= A.length - 1。并且如果 B[i+1] - B[i]( 0 &amp;lt;= i &amp;lt; B.length - 1) 的值都相同，那么序列 B 是等差">
+<meta property="og:description" content="题目：给定一棵二叉树的根 root，请你考虑它所有 从根到叶的路径：从根到任何叶的路径。（所谓一个叶子节点，就是一个没有子节点的节点） 假如通过节点 node 的每种可能的 “根-叶” 路径上值的总和全都小于给定的 limit，则该节点被称之为「不足节点」，需要被删除。 请你删除所有不足节点，并返回生成的二叉树的根。 示例：示例 1： 输入：root = [1,2,3,4,-99,-99,7,8,">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-04-25T09:05:11.453Z">
+<meta property="og:updated_time" content="2019-06-10T07:52:55.057Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="leetcode 1027.最长等差数列">
-<meta name="twitter:description" content="题目：给定一个整数数组 A，返回 A 中最长等差子序列的长度。 回想一下，A 的子序列是列表 A[i_1], A[i_2], ..., A[i_k] 其中0 &amp;lt;= i_1 &amp;lt; i_2 &amp;lt; ... &amp;lt; i_k &amp;lt;= A.length - 1。并且如果 B[i+1] - B[i]( 0 &amp;lt;= i &amp;lt; B.length - 1) 的值都相同，那么序列 B 是等差">
+<meta name="twitter:title" content="leetcode 1080. 根到叶路径上的不足节点">
+<meta name="twitter:description" content="题目：给定一棵二叉树的根 root，请你考虑它所有 从根到叶的路径：从根到任何叶的路径。（所谓一个叶子节点，就是一个没有子节点的节点） 假如通过节点 node 的每种可能的 “根-叶” 路径上值的总和全都小于给定的 limit，则该节点被称之为「不足节点」，需要被删除。 请你删除所有不足节点，并返回生成的二叉树的根。 示例：示例 1： 输入：root = [1,2,3,4,-99,-99,7,8,">
 
 
 
@@ -114,7 +114,7 @@
 
   
   
-  <link rel="canonical" href="http://www.flyingkw.com/2019/04/18/leetcode 1027-最长等差数列/">
+  <link rel="canonical" href="http://www.flyingkw.com/2019/06/10/leetcode 1080. 根到叶路径上的不足节点/">
 
 
 
@@ -124,7 +124,7 @@
   };
 </script>
 
-  <title>leetcode 1027.最长等差数列 | 张珂玮的博客</title>
+  <title>leetcode 1080. 根到叶路径上的不足节点 | 张珂玮的博客</title>
   
 
 
@@ -352,7 +352,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.flyingkw.com/2019/04/18/leetcode 1027-最长等差数列/">
+    <link itemprop="mainEntityOfPage" href="http://www.flyingkw.com/2019/06/10/leetcode 1080. 根到叶路径上的不足节点/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="张珂玮">
@@ -369,7 +369,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">leetcode 1027.最长等差数列
+          <h1 class="post-title" itemprop="name headline">leetcode 1080. 根到叶路径上的不足节点
 
               
             
@@ -395,24 +395,12 @@
                 
               
 
-              <time title="创建时间：2019-04-18 17:06:56" itemprop="dateCreated datePublished" datetime="2019-04-18T17:06:56+08:00">2019-04-18</time>
+              <time title="创建时间：2019-06-10 15:43:14 / 修改时间：15:52:55" itemprop="dateCreated datePublished" datetime="2019-06-10T15:43:14+08:00">2019-06-10</time>
             
 
             
               
 
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2019-04-25 17:05:11" itemprop="dateModified" datetime="2019-04-25T17:05:11+08:00">2019-04-25</time>
               
             
           </span>
@@ -448,8 +436,8 @@
                 </span>
             
                 <span class="post-meta-item-text">评论数：</span>
-                <a href="/2019/04/18/leetcode 1027-最长等差数列/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2019/04/18/leetcode 1027-最长等差数列/" itemprop="commentCount"></span>
+                <a href="/2019/06/10/leetcode 1080. 根到叶路径上的不足节点/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/06/10/leetcode 1080. 根到叶路径上的不足节点/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -477,44 +465,85 @@
       
 
       
-        <h3 id="题目："><a href="#题目：" class="headerlink" title="题目："></a>题目：</h3><p>给定一个整数数组 A，返回 A 中最长等差子序列的长度。</p>
-<p>回想一下，A 的子序列是列表 <code>A[i_1], A[i_2], ..., A[i_k]</code> 其中<code>0 &lt;= i_1 &lt; i_2 &lt; ... &lt; i_k &lt;= A.length - 1</code>。并且如果 <code>B[i+1] - B[i]( 0 &lt;= i &lt; B.length - 1)</code> 的值都相同，那么序列 <code>B</code> 是等差的。</p>
+        <h3 id="题目："><a href="#题目：" class="headerlink" title="题目："></a>题目：</h3><p>给定一棵二叉树的根 root，请你考虑它所有 从根到叶的路径：从根到任何叶的路径。（所谓一个叶子节点，就是一个没有子节点的节点）</p>
+<p>假如通过节点 node 的每种可能的 “根-叶” 路径上值的总和全都小于给定的 limit，则该节点被称之为「不足节点」，需要被删除。</p>
+<p>请你删除所有不足节点，并返回生成的二叉树的根。</p>
 <h3 id="示例："><a href="#示例：" class="headerlink" title="示例："></a>示例：</h3><p>示例 1：</p>
-<pre><code>输入：[3,6,9,12]
-输出：4
-解释： 
-整个数组是公差为 3 的等差数列。
+<pre><code>输入：root = [1,2,3,4,-99,-99,7,8,9,-99,-99,12,13,-99,14], limit = 1
+
+输出：[1,2,3,4,null,null,7,8,9,null,14]
 </code></pre><p>示例 2：</p>
-<pre><code>输入：[9,4,7,2,10]
-输出：3
-解释：
-最长的等差子序列是 [4,7,10]。
+<pre><code>输入：root = [5,4,8,11,null,17,4,7,1,null,null,5,3], limit = 22
+
+输出：[5,4,8,11,null,17,4,7,null,null,null,5]
 </code></pre><p>示例 3：</p>
-<pre><code>输入：[20,1,15,3,10,5,8]
-输出：4
-解释：
-最长的等差子序列是 [20,15,10,5]。
+<pre><code>输入：root = [5,-6,-6], limit = 0
+输出：[]
 </code></pre><h3 id="提示："><a href="#提示：" class="headerlink" title="提示："></a>提示：</h3><ol>
-<li>2 &lt;= A.length &lt;= 2000</li>
-<li>0 &lt;= A[i] &lt;= 10000</li>
+<li>给定的树有 1 到 5000 个节点</li>
+<li>-10^5 &lt;= node.val &lt;= 10^5</li>
+<li>-10^9 &lt;= limit &lt;= 10^9</li>
 </ol>
-<h3 id="分析："><a href="#分析：" class="headerlink" title="分析："></a>分析：</h3><p>动态规划：<code>vi[i][A[i] - A[j]] = vi[j][A[i] - A[j]]+1</code></p>
-<p>对每个数记录向前所有的数的差值的数量</p>
-<h3 id="代码："><a href="#代码：" class="headerlink" title="代码："></a>代码：</h3><pre><code>class Solution {
+<h3 id="分析："><a href="#分析：" class="headerlink" title="分析："></a>分析：</h3><p>递归，每个节点的路径总和为左子树或右子树路径总和中大的那个，叶节点为从根节点到叶节点的路径和</p>
+<p>对每个节点进行判断如果左子树或右子树的路径和如果小于limit，就删除不足的子树</p>
+<h3 id="代码："><a href="#代码：" class="headerlink" title="代码："></a>代码：</h3><pre><code>/**
+ * Definition for a binary tree node.
+ * struct TreeNode {
+ *     int val;
+ *     TreeNode *left;
+ *     TreeNode *right;
+ *     TreeNode(int x) : val(x), left(NULL), right(NULL) {}
+ * };
+ */
+class Solution {
 public:
-    int longestArithSeqLength(vector&lt;int&gt;&amp; A) {
-        vector&lt;map&lt;int, int&gt;&gt; vi(A.size());
-        int max = 0;
-        for(int i = 0; i &lt; A.size(); i++){
-            for(int j = 0; j &lt; i; j++){
-                vi[i][A[i] - A[j]] = vi[j][A[i] - A[j]]+1;
-                max = max &gt; vi[i][A[i] - A[j]] ? max : vi[i][A[i] - A[j]];
+    int dg(TreeNode* root, int limit, int h){
+        int left = INT_MIN;
+        int right = INT_MIN;
+        if(root-&gt;left == NULL &amp;&amp; root-&gt;right == NULL){  // 遇到叶节点，返回从根到此节点所有节点的和
+            h += root-&gt;val;
+            return h;
+        }
+        if(root-&gt;left != NULL){  
+            left = dg(root-&gt;left, limit, h + root-&gt;val);
+            if(left &lt; limit){  //如果左子树返回小于limit，删除左子树
+                delete(root-&gt;left);
+                root-&gt;left = NULL;
             }
         }
-        return max+1;
+        if(root-&gt;right != NULL){
+            right = dg(root-&gt;right, limit, h + root-&gt;val);
+            if(right &lt; limit){  //如果右子树返回小于limit，删除右子树
+                delete(root-&gt;right);
+                root-&gt;right = NULL;
+            }
+        }
+        cout &lt;&lt; left &lt;&lt; &quot; &quot; &lt;&lt; right &lt;&lt; &quot;\n&quot;;
+        if(left == INT_MIN){
+            return max(right, h + root-&gt;val);
+        }
+        if(right == INT_MIN){
+            return max(left, h + root-&gt;val);
+        }
+        if(left &gt; right){
+            return left;
+        }
+        else{
+            return right;
+        }
+    }
+    TreeNode* sufficientSubset(TreeNode* root, int limit) {
+        int z = dg(root, limit, 0);
+        if(z &lt; limit){
+            return NULL;
+        }
+        return root;
     }
 };
-</code></pre>
+</code></pre><blockquote>
+<p>题目地址:<a href="https://leetcode-cn.com/contest/weekly-contest-140/problems/insufficient-nodes-in-root-to-leaf-paths/" target="_blank" rel="noopener">https://leetcode-cn.com/contest/weekly-contest-140/problems/insufficient-nodes-in-root-to-leaf-paths/</a></p>
+</blockquote>
+
       
     </div>
 
@@ -544,8 +573,8 @@ public:
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/04/18/leetcode 1026-节点与祖先之间的最大差值/" rel="next" title="leetcode 1026.节点与祖先之间的最大差值">
-                <i class="fa fa-chevron-left"></i> leetcode 1026.节点与祖先之间的最大差值
+              <a href="/2019/06/10/leetcode 1079. 活字印刷/" rel="next" title="leetcode 1079. 活字印刷">
+                <i class="fa fa-chevron-left"></i> leetcode 1079. 活字印刷
               </a>
             
           </div>
@@ -554,8 +583,8 @@ public:
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2019/04/18/leetcode 1028-从先序遍历还原二叉树/" rel="prev" title="leetcode 1028.从先序遍历还原二叉树">
-                leetcode 1028.从先序遍历还原二叉树 <i class="fa fa-chevron-right"></i>
+              <a href="/2019/06/10/leetcode 1081. 不同字符的最小子序列/" rel="prev" title="leetcode 1081. 不同字符的最小子序列">
+                leetcode 1081. 不同字符的最小子序列 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>

@@ -271,6 +271,23 @@
     <a href="/categories/Hexo" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>Hexo</a>
 
   </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-android-studio">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/categories/Android studio/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>Android studio</a>
+
+  </li>
 
       
       
@@ -333,6 +350,1178 @@
           <div id="content" class="content">
             
   <section id="posts" class="posts-expand">
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.flyingkw.com/2019/04/25/leetcode 1030-距离顺序排列矩阵单元格/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="张珂玮">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="张珂玮的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2019/04/25/leetcode 1030-距离顺序排列矩阵单元格/" class="post-title-link" itemprop="url">leetcode 1030.距离顺序排列矩阵单元格</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-04-25 16:20:58 / 修改时间：17:05:11" itemprop="dateCreated datePublished" datetime="2019-04-25T16:20:58+08:00">2019-04-25</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/leetcode题目/" itemprop="url" rel="index"><span itemprop="name">leetcode题目</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+              
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+            
+                <span class="post-meta-item-text">评论数：</span>
+                <a href="/2019/04/25/leetcode 1030-距离顺序排列矩阵单元格/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/04/25/leetcode 1030-距离顺序排列矩阵单元格/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="题目："><a href="#题目：" class="headerlink" title="题目："></a>题目：</h3><p>给出 R 行 C 列的矩阵，其中的单元格的整数坐标为 (r, c)，满足 0 &lt;= r &lt; R 且 0 &lt;= c &lt; C。</p>
+<p>另外，我们在该矩阵中给出了一个坐标为 (r0, c0) 的单元格。</p>
+<p>返回矩阵中的所有单元格的坐标，并按到 (r0, c0) 的距离从最小到最大的顺序排，其中，两单元格(r1, c1) 和 (r2, c2) 之间的距离是曼哈顿距离，|r1 - r2| + |c1 - c2|。（你可以按任何满足此条件的顺序返回答案。）</p>
+<h3 id="示例："><a href="#示例：" class="headerlink" title="示例："></a>示例：</h3><p>示例 1：</p>
+<pre><code>输入：R = 1, C = 2, r0 = 0, c0 = 0
+输出：[[0,0],[0,1]]
+解释：从 (r0, c0) 到其他单元格的距离为：[0,1]
+</code></pre><p>示例 2：</p>
+<pre><code>输入：R = 2, C = 2, r0 = 0, c0 = 1
+输出：[[0,1],[0,0],[1,1],[1,0]]
+解释：从 (r0, c0) 到其他单元格的距离为：[0,1,1,2]
+[[0,1],[1,1],[0,0],[1,0]] 也会被视作正确答案。
+</code></pre><p>示例 3：</p>
+<pre><code>输入：R = 2, C = 3, r0 = 1, c0 = 2
+输出：[[1,2],[0,2],[1,1],[0,1],[1,0],[0,0]]
+解释：从 (r0, c0) 到其他单元格的距离为：[0,1,1,2,2,3]
+其他满足题目要求的答案也会被视为正确，例如 [[1,2],[1,1],[0,2],[1,0],[0,1],[0,0]]。
+</code></pre><h3 id="提示："><a href="#提示：" class="headerlink" title="提示："></a>提示：</h3><ol>
+<li>1 &lt;= R &lt;= 100</li>
+<li>1 &lt;= C &lt;= 100</li>
+<li>0 &lt;= r0 &lt; R</li>
+<li>0 &lt;= c0 &lt; C</li>
+</ol>
+<h3 id="分析："><a href="#分析：" class="headerlink" title="分析："></a>分析：</h3><p>直接按照单元格之间的距离排序</p>
+<h3 id="代码："><a href="#代码：" class="headerlink" title="代码："></a>代码：</h3><pre><code>int r;
+int c;
+class Solution {
+public:
+    static bool px(const vector&lt;int&gt;&amp; a, const vector&lt;int&gt;&amp; b){
+        int a1 = a[0] - r &gt; r - a[0] ? a[0] - r : r - a[0];
+        a1 += a[1] - c &gt; c - a[1] ? a[1] - c : c - a[1];
+
+        int b1 = b[0] - r &gt; r - b[0] ? b[0] - r : r - b[0];
+        b1 += b[1] - c &gt; c - b[1] ? b[1] - c : c - b[1];
+
+        return a1 &lt; b1;
+    }
+    vector&lt;vector&lt;int&gt;&gt; allCellsDistOrder(int R, int C, int r0, int c0) {
+        r = r0;
+        c = c0;
+        vector&lt;vector&lt;int&gt;&gt; vvi;
+        for(int i = 0; i &lt; R; i++){
+            for(int j = 0; j &lt; C; j++){
+                vector&lt;int&gt; vi;
+                vi.push_back(i);
+                vi.push_back(j);
+                vvi.push_back(vi);
+            }
+        }
+        sort(vvi.begin(), vvi.end(), px);
+        return vvi;
+    }
+};
+</code></pre>
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.flyingkw.com/2019/04/25/leetcode 1029-两地调度/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="张珂玮">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="张珂玮的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2019/04/25/leetcode 1029-两地调度/" class="post-title-link" itemprop="url">leetcode 1029.两地调度</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-04-25 16:14:20 / 修改时间：17:05:11" itemprop="dateCreated datePublished" datetime="2019-04-25T16:14:20+08:00">2019-04-25</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/leetcode题目/" itemprop="url" rel="index"><span itemprop="name">leetcode题目</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+              
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+            
+                <span class="post-meta-item-text">评论数：</span>
+                <a href="/2019/04/25/leetcode 1029-两地调度/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/04/25/leetcode 1029-两地调度/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="题目："><a href="#题目：" class="headerlink" title="题目："></a>题目：</h3><p>公司计划面试 2N 人。第 i 人飞往 A 市的费用为 costs[i][0]，飞往 B 市的费用为 costs[i][1]。</p>
+<p>返回将每个人都飞到某座城市的最低费用，要求每个城市都有 N 人抵达。</p>
+<h3 id="示例："><a href="#示例：" class="headerlink" title="示例："></a>示例：</h3><p>输入：[[10,20],[30,200],[400,50],[30,20]]<br>输出：110<br>解释：<br>第一个人去 A 市，费用为 10。<br>第二个人去 A 市，费用为 30。<br>第三个人去 B 市，费用为 50。<br>第四个人去 B 市，费用为 20。</p>
+<p>最低总费用为 10 + 30 + 50 + 20 = 110，每个城市都有一半的人在面试。</p>
+<h3 id="提示："><a href="#提示：" class="headerlink" title="提示："></a>提示：</h3><ol>
+<li>1 &lt;= costs.length &lt;= 100</li>
+<li>costs.length 为偶数</li>
+<li>1 &lt;= costs[i][0], costs[i][1] &lt;= 1000</li>
+</ol>
+<h3 id="分析："><a href="#分析：" class="headerlink" title="分析："></a>分析：</h3><p>将每个人飞往两地的费用相减，取绝对值，然后按照这个绝对值从大到小排列，按照这个顺序安排前往两地的人，直到其中一个人数达到N，剩下的全部前往另一地</p>
+<h3 id="代码："><a href="#代码：" class="headerlink" title="代码："></a>代码：</h3><pre><code>class Solution {
+public:
+    static bool px(vector&lt;int&gt;&amp; a, vector&lt;int&gt;&amp; b){
+        int a1 = a[0] - a[1];
+        int b1 = b[0] - b[1];
+        if(a1 &lt; 0){
+            a1 *= (-1);
+        }
+        if(b1 &lt; 0){
+            b1 *= (-1);
+        }
+        return a1 &gt; b1;
+    }
+    int twoCitySchedCost(vector&lt;vector&lt;int&gt;&gt;&amp; costs) {
+        sort(costs.begin(), costs.end(), px);
+        int a = 0;
+        int b = 0;
+        int m = 0;
+        for(int i = 0; i &lt; costs.size(); i++){
+            cout &lt;&lt; costs[i][0] - costs[i][1] &lt;&lt; &quot;\n&quot;;
+            if(costs[i][0] &lt; costs[i][1]){
+                if(a &lt; costs.size()/2){
+                    a++;
+                    m += costs[i][0];
+                }
+                else{
+                    b++;
+                    m += costs[i][1];
+                }
+            }
+            else if(costs[i][0] &gt;= costs[i][1]){
+                if(b &lt; costs.size()/2){
+                    b++;
+                    m += costs[i][1];
+                }
+                else{
+                    a++;
+                    m += costs[i][0];
+                }
+            }
+
+        }
+        return m;
+    }
+};
+</code></pre>
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.flyingkw.com/2019/04/18/leetcode 1028-从先序遍历还原二叉树/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="张珂玮">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="张珂玮的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2019/04/18/leetcode 1028-从先序遍历还原二叉树/" class="post-title-link" itemprop="url">leetcode 1028.从先序遍历还原二叉树</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-04-18 17:35:04" itemprop="dateCreated datePublished" datetime="2019-04-18T17:35:04+08:00">2019-04-18</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-04-25 17:05:11" itemprop="dateModified" datetime="2019-04-25T17:05:11+08:00">2019-04-25</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/leetcode题目/" itemprop="url" rel="index"><span itemprop="name">leetcode题目</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+              
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+            
+                <span class="post-meta-item-text">评论数：</span>
+                <a href="/2019/04/18/leetcode 1028-从先序遍历还原二叉树/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/04/18/leetcode 1028-从先序遍历还原二叉树/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="题目："><a href="#题目：" class="headerlink" title="题目："></a>题目：</h3><p>我们从二叉树的根节点 root 开始进行深度优先搜索。</p>
+<p>在遍历中的每个节点处，我们输出 D 条短划线（其中 D 是该节点的深度），然后输出该节点的值。（如果节点的深度为 D，则其直接子节点的深度为 D + 1。根节点的深度为 0）。</p>
+<p>如果节点只有一个子节点，那么保证该子节点为左子节点。</p>
+<p>给出遍历输出 S，还原树并返回其根节点 root。</p>
+<h3 id="示例："><a href="#示例：" class="headerlink" title="示例："></a>示例：</h3><p>示例 1：</p>
+<pre><code>输入：&quot;1-2--3--4-5--6--7&quot;
+输出：[1,2,5,3,4,6,7]
+</code></pre><p>示例 2：</p>
+<pre><code>输入：&quot;1-2--3---4-5--6---7&quot;
+输出：[1,2,5,3,null,6,null,4,null,7]
+</code></pre><p>示例 3：</p>
+<pre><code>输入：&quot;1-401--349---90--88&quot;
+输出：[1,401,null,349,88,90]
+</code></pre><h3 id="提示："><a href="#提示：" class="headerlink" title="提示："></a>提示：</h3><ul>
+<li>原始树中的节点数介于 1 和 1000 之间。</li>
+<li>每个节点的值介于 1 和 10 ^ 9 之间。</li>
+</ul>
+<h3 id="分析："><a href="#分析：" class="headerlink" title="分析："></a>分析：</h3><p>定义一个数组，指向每个深度最右边的那个节点的地址。</p>
+<p>遍历字符串S，获得每个节点的深度和值。</p>
+<p>判段当前所需添加节点的深度-1的位置是否有左节点：</p>
+<ul>
+<li>若有，就将当前节点添加到深度-1节点的右节点，并且将数组中当前深度替换为当前的结点；</li>
+<li>若没有，就将当前节点添加到深度-1结点的左节点，并且将数组中当前深度替换为当前的结点</li>
+</ul>
+<h3 id="代码："><a href="#代码：" class="headerlink" title="代码："></a>代码：</h3><pre><code>/**
+ * Definition for a binary tree node.
+ * struct TreeNode {
+ *     int val;
+ *     TreeNode *left;
+ *     TreeNode *right;
+ *     TreeNode(int x) : val(x), left(NULL), right(NULL) {}
+ * };
+ */
+class Solution {
+public:
+    TreeNode* recoverFromPreorder(string S) {
+        TreeNode* sd[1000];
+        for(int i = 0; i &lt; 1000; i++){
+            sd[i] = NULL;
+        }
+        int z = 0;
+        int i = 0;
+        while(i &lt; S.size() &amp;&amp; S[i] != &apos;-&apos;){
+            z = z*10 + int(S[i] - &apos;0&apos;);
+            i++;
+        }
+
+        sd[0] = new TreeNode(z);
+
+        for(; i &lt; S.size();){
+
+            int q = 0; // 记录‘-’的数量
+            int p = 0; // 记录当前节点数字
+            while(i &lt; S.size() &amp;&amp; S[i] == &apos;-&apos;){
+                i++;
+                q++;
+            }
+
+            while(i &lt; S.size() &amp;&amp; S[i] != &apos;-&apos;){
+                p = p*10 + int(S[i] - &apos;0&apos;);
+                i++;
+            }
+
+            if(sd[q-1]-&gt;left == NULL){
+                sd[q-1]-&gt;left = new TreeNode(p);
+                sd[q] = sd[q-1]-&gt;left;
+            }
+            else{
+                sd[q-1]-&gt;right = new TreeNode(p);
+                sd[q] = sd[q-1]-&gt;right;
+            }
+
+        }
+
+        return sd[0];
+    }
+};
+</code></pre>
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.flyingkw.com/2019/04/18/leetcode 1027-最长等差数列/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="张珂玮">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="张珂玮的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2019/04/18/leetcode 1027-最长等差数列/" class="post-title-link" itemprop="url">leetcode 1027.最长等差数列</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-04-18 17:06:56" itemprop="dateCreated datePublished" datetime="2019-04-18T17:06:56+08:00">2019-04-18</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-04-25 17:05:11" itemprop="dateModified" datetime="2019-04-25T17:05:11+08:00">2019-04-25</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/leetcode题目/" itemprop="url" rel="index"><span itemprop="name">leetcode题目</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+              
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+            
+                <span class="post-meta-item-text">评论数：</span>
+                <a href="/2019/04/18/leetcode 1027-最长等差数列/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/04/18/leetcode 1027-最长等差数列/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="题目："><a href="#题目：" class="headerlink" title="题目："></a>题目：</h3><p>给定一个整数数组 A，返回 A 中最长等差子序列的长度。</p>
+<p>回想一下，A 的子序列是列表 <code>A[i_1], A[i_2], ..., A[i_k]</code> 其中<code>0 &lt;= i_1 &lt; i_2 &lt; ... &lt; i_k &lt;= A.length - 1</code>。并且如果 <code>B[i+1] - B[i]( 0 &lt;= i &lt; B.length - 1)</code> 的值都相同，那么序列 <code>B</code> 是等差的。</p>
+<h3 id="示例："><a href="#示例：" class="headerlink" title="示例："></a>示例：</h3><p>示例 1：</p>
+<pre><code>输入：[3,6,9,12]
+输出：4
+解释： 
+整个数组是公差为 3 的等差数列。
+</code></pre><p>示例 2：</p>
+<pre><code>输入：[9,4,7,2,10]
+输出：3
+解释：
+最长的等差子序列是 [4,7,10]。
+</code></pre><p>示例 3：</p>
+<pre><code>输入：[20,1,15,3,10,5,8]
+输出：4
+解释：
+最长的等差子序列是 [20,15,10,5]。
+</code></pre><h3 id="提示："><a href="#提示：" class="headerlink" title="提示："></a>提示：</h3><ol>
+<li>2 &lt;= A.length &lt;= 2000</li>
+<li>0 &lt;= A[i] &lt;= 10000</li>
+</ol>
+<h3 id="分析："><a href="#分析：" class="headerlink" title="分析："></a>分析：</h3><p>动态规划：<code>vi[i][A[i] - A[j]] = vi[j][A[i] - A[j]]+1</code></p>
+<p>对每个数记录向前所有的数的差值的数量</p>
+<h3 id="代码："><a href="#代码：" class="headerlink" title="代码："></a>代码：</h3><pre><code>class Solution {
+public:
+    int longestArithSeqLength(vector&lt;int&gt;&amp; A) {
+        vector&lt;map&lt;int, int&gt;&gt; vi(A.size());
+        int max = 0;
+        for(int i = 0; i &lt; A.size(); i++){
+            for(int j = 0; j &lt; i; j++){
+                vi[i][A[i] - A[j]] = vi[j][A[i] - A[j]]+1;
+                max = max &gt; vi[i][A[i] - A[j]] ? max : vi[i][A[i] - A[j]];
+            }
+        }
+        return max+1;
+    }
+};
+</code></pre>
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.flyingkw.com/2019/04/18/leetcode 1026-节点与祖先之间的最大差值/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="张珂玮">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="张珂玮的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2019/04/18/leetcode 1026-节点与祖先之间的最大差值/" class="post-title-link" itemprop="url">leetcode 1026.节点与祖先之间的最大差值</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-04-18 16:57:45" itemprop="dateCreated datePublished" datetime="2019-04-18T16:57:45+08:00">2019-04-18</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-04-25 17:05:11" itemprop="dateModified" datetime="2019-04-25T17:05:11+08:00">2019-04-25</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/leetcode题目/" itemprop="url" rel="index"><span itemprop="name">leetcode题目</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+              
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+            
+                <span class="post-meta-item-text">评论数：</span>
+                <a href="/2019/04/18/leetcode 1026-节点与祖先之间的最大差值/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/04/18/leetcode 1026-节点与祖先之间的最大差值/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="题目："><a href="#题目：" class="headerlink" title="题目："></a>题目：</h3><p>给定二叉树的根节点 root，找出存在于不同节点 A 和 B 之间的最大值 V，其中 V = |A.val - B.val|，且 A 是 B 的祖先。</p>
+<p>（如果 A 的任何子节点之一为 B，或者 A 的任何子节点是 B 的祖先，那么我们认为 A 是 B 的祖先）</p>
+<h3 id="示例："><a href="#示例：" class="headerlink" title="示例："></a>示例：</h3><pre><code>输入：[8,3,10,1,6,null,14,null,null,4,7,13]
+输出：7
+解释： 
+我们有大量的节点与其祖先的差值，其中一些如下：
+|8 - 3| = 5
+|3 - 7| = 4
+|8 - 1| = 7
+|10 - 13| = 3
+在所有可能的差值中，最大值 7 由 |8 - 1| = 7 得出。
+</code></pre><h3 id="提示："><a href="#提示：" class="headerlink" title="提示："></a>提示：</h3><ol>
+<li>树中的节点数在 2 到 5000 之间。</li>
+<li>每个节点的值介于 0 到 100000 之间。</li>
+</ol>
+<h3 id="分析："><a href="#分析：" class="headerlink" title="分析："></a>分析：</h3><p>递归遍历二叉树，每次递归时，传递从当前结点到根结点路径中最大和最小的值，和当前节点比较，存储最大的差值</p>
+<h3 id="代码："><a href="#代码：" class="headerlink" title="代码："></a>代码：</h3><pre><code>/**
+ * Definition for a binary tree node.
+ * struct TreeNode {
+ *     int val;
+ *     TreeNode *left;
+ *     TreeNode *right;
+ *     TreeNode(int x) : val(x), left(NULL), right(NULL) {}
+ * };
+ */
+class Solution {
+private:
+    int max;
+public:
+    void dg(TreeNode* root, int b, int s){
+        max = max &gt; root-&gt;val - s ? max : root-&gt;val - s;
+        max = max &gt; b - root-&gt;val ? max : b - root-&gt;val; 
+        b = b &gt; root-&gt;val ? b : root-&gt;val;
+        s = s &lt; root-&gt;val ? s : root-&gt;val;
+
+        if(root-&gt;left != NULL){
+            dg(root-&gt;left, b, s);
+        }
+        if(root-&gt;right != NULL){
+            dg(root-&gt;right, b, s);
+        }
+
+    }
+    int maxAncestorDiff(TreeNode* root) {
+        max = 0;
+        dg(root, root-&gt;val, root-&gt;val);
+        return max;
+    }
+};
+</code></pre>
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
     
       
 
@@ -940,7 +2129,7 @@ https://blog.csdn.net/u011240016/article/details/79422462
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">62</span>
+                    <span class="site-state-item-count">67</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -957,7 +2146,9 @@ https://blog.csdn.net/u011240016/article/details/79422462
                     
                       
                     
-                    <span class="site-state-item-count">2</span>
+                      
+                    
+                    <span class="site-state-item-count">3</span>
                     <span class="site-state-item-name">分类</span>
                   
                 </div>

@@ -1,6 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[记录程序运行时间]]></title>
+    <url>%2F2019%2F08%2F18%2F%E8%AE%B0%E5%BD%95%E7%A8%8B%E5%BA%8F%E8%BF%90%E8%A1%8C%E6%97%B6%E9%97%B4%2F</url>
+    <content type="text"><![CDATA[clock_t startTime,endTime; //声明两个clock_t类型变量 startTime = clock();//计时开始 endTime = clock();//计时结束 cout &lt;&lt; (double)endTime - startTime &lt;&lt; &quot;\n&quot;; // 输出间隔时间]]></content>
+      <categories>
+        <category>c++</category>
+      </categories>
+  </entry>
+  <entry>
     <title><![CDATA[leetcode 1157. 子数组中占绝大多数的元素]]></title>
     <url>%2F2019%2F08%2F12%2Fleetcode%201157.%20%E5%AD%90%E6%95%B0%E7%BB%84%E4%B8%AD%E5%8D%A0%E7%BB%9D%E5%A4%A7%E5%A4%9A%E6%95%B0%E7%9A%84%E5%85%83%E7%B4%A0%2F</url>
     <content type="text"><![CDATA[题目：实现一个 MajorityChecker 的类，它应该具有下述几个 API： MajorityChecker(int[] arr) 会用给定的数组 arr 来构造一个 MajorityChecker 的实例。 int query(int left, int right, int threshold) 有这么几个参数： 0 &lt;= left &lt;= right &lt; arr.length 表示数组 arr 的子数组的长度。 2 * threshold &gt; right - left + 1，也就是说阀值 threshold 始终比子序列长度的一半还要大。 每次查询 query(…) 会返回在 arr[left], arr[left+1], …, arr[right] 中至少出现阀值次数 threshold 的元素，如果不存在这样的元素，就返回 -1。 示例：MajorityChecker majorityChecker = new MajorityChecker([1,1,2,2,1,1]); majorityChecker.query(0,5,4); // 返回 1 majorityChecker.query(0,3,3); // 返回 -1 majorityChecker.query(2,3,2); // 返回 2 提示： 1 &lt;= arr.length &lt;= 20000 1 &lt;= arr[i] &lt;= 20000 对于每次查询，0 &lt;= left &lt;= right &lt; len(arr) 对于每次查询，2 * threshold &gt; right - left + 1 查询次数最多为 10000 分析：初始化就直接拷贝一份数组 一开始我将区间内所有的数统计起来，但是居然会超时，然后就使用下面的方法 因为需要的数字出现的数量一定是要大于所有数字的一半的。所以遍历区间，遇到相同的数时数量加一，遇到不同的数时数量减一，如果减到0，就换成最新的数，将数量重置为1。 然后统计这个数的数量是否大于threshold即可 代码：class MajorityChecker { private: vector&lt;int&gt; vi; public: MajorityChecker(vector&lt;int&gt;&amp; arr) { vi = arr; } int query(int left, int right, int threshold) { int z = 0; int x = 0; int r = 0; for(int i = left; i &lt;= right; i++){ if(z == 0){ z = 1; x = vi[i]; } else if(x == vi[i]) z++; else z--; } for(int i = left; i &lt;= right; i++){ if(x == vi[i]){ r++; } } if(r &gt;= threshold) return x; return -1; } }; /** * Your MajorityChecker object will be instantiated and called as such: * MajorityChecker* obj = new MajorityChecker(arr); * int param_1 = obj-&gt;query(left,right,threshold); */ 题目地址：https://leetcode-cn.com/contest/weekly-contest-149/problems/online-majority-element-in-subarray/]]></content>

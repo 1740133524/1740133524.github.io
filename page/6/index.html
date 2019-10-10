@@ -383,6 +383,208 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.flyingkw.com/2019/07/08/leetcode 1108. IP 地址无效化/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="张珂玮">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="张珂玮的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2019/07/08/leetcode 1108. IP 地址无效化/" class="post-title-link" itemprop="url">leetcode 1108. IP 地址无效化</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-07-08 15:23:11 / 修改时间：15:42:39" itemprop="dateCreated datePublished" datetime="2019-07-08T15:23:11+08:00">2019-07-08</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/leetcode题目/" itemprop="url" rel="index"><span itemprop="name">leetcode题目</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+              
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+            
+                <span class="post-meta-item-text">评论数：</span>
+                <a href="/2019/07/08/leetcode 1108. IP 地址无效化/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/07/08/leetcode 1108. IP 地址无效化/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="题目："><a href="#题目：" class="headerlink" title="题目："></a>题目：</h3><p>给你一个有效的 IPv4 地址 address，返回这个 IP 地址的无效化版本。</p>
+<p>所谓无效化 IP 地址，其实就是用 “[.]” 代替了每个 “.”。</p>
+<h3 id="示例："><a href="#示例：" class="headerlink" title="示例："></a>示例：</h3><p>示例 1：</p>
+<pre><code>输入：address = &quot;1.1.1.1&quot;
+输出：&quot;1[.]1[.]1[.]1&quot;
+</code></pre><p>示例 2：</p>
+<pre><code>输入：address = &quot;255.100.50.0&quot;
+输出：&quot;255[.]100[.]50[.]0&quot;
+</code></pre><h3 id="提示："><a href="#提示：" class="headerlink" title="提示："></a>提示：</h3><ul>
+<li>给出的 address 是一个有效的 IPv4 地址</li>
+</ul>
+<h3 id="分析："><a href="#分析：" class="headerlink" title="分析："></a>分析：</h3><p>直接转换</p>
+<h3 id="代码："><a href="#代码：" class="headerlink" title="代码："></a>代码：</h3><pre><code>class Solution {
+public:
+    string defangIPaddr(string address) {
+        string str = &quot;&quot;;
+        for(int i = 0; i &lt; address.size(); i++){
+            if(address[i] == &apos;.&apos;){
+                str += &quot;[.]&quot;;
+            }
+            else
+                str += address[i];
+        }
+        return str;
+    }
+};
+</code></pre><blockquote>
+<p>题目地址：<a href="https://leetcode-cn.com/contest/weekly-contest-144/problems/defanging-an-ip-address/" target="_blank" rel="noopener">https://leetcode-cn.com/contest/weekly-contest-144/problems/defanging-an-ip-address/</a></p>
+</blockquote>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://www.flyingkw.com/2019/07/01/leetcode 1106. 解析布尔表达式/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -2599,315 +2801,6 @@ public:
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.flyingkw.com/2019/06/17/leetcode 1091. 二进制矩阵中的最短路径/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="张珂玮">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="张珂玮的博客">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2019/06/17/leetcode 1091. 二进制矩阵中的最短路径/" class="post-title-link" itemprop="url">leetcode 1091. 二进制矩阵中的最短路径</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2019-06-17 16:18:35 / 修改时间：16:24:01" itemprop="dateCreated datePublished" datetime="2019-06-17T16:18:35+08:00">2019-06-17</time>
-            
-
-            
-              
-
-              
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/leetcode题目/" itemprop="url" rel="index"><span itemprop="name">leetcode题目</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-            
-              
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-            
-                <span class="post-meta-item-text">评论数：</span>
-                <a href="/2019/06/17/leetcode 1091. 二进制矩阵中的最短路径/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2019/06/17/leetcode 1091. 二进制矩阵中的最短路径/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h3 id="题目："><a href="#题目：" class="headerlink" title="题目："></a>题目：</h3><p>在一个 N × N 的方形网格中，每个单元格有两种状态：空（0）或者阻塞（1）。</p>
-<p>一条从左上角到右下角、长度为 k 的畅通路径，由满足下述条件的单元格 C_1, C_2, …, C_k 组成：</p>
-<p>相邻单元格 C_i 和 C_{i+1} 在八个方向之一上连通（此时，C_i 和 C_{i+1} 不同且共享边或角）<br>C_1 位于 (0, 0)（即，值为 grid[0][0]）<br>C_k 位于 (N-1, N-1)（即，值为 grid[N-1][N-1]）<br>如果 C_i 位于 (r, c)，则 grid[r][c] 为空（即，grid[r][c] == 0）<br>返回这条从左上角到右下角的最短畅通路径的长度。如果不存在这样的路径，返回 -1 。</p>
-<h3 id="示例："><a href="#示例：" class="headerlink" title="示例："></a>示例：</h3><p>示例 1：</p>
-<pre><code>输入：[[0,1],[1,0]]
-
-输出：2
-</code></pre><p>示例 2：</p>
-<pre><code>输入：[[0,0,0],[1,1,0],[1,1,0]]
-
-输出：4
-</code></pre><h3 id="提示："><a href="#提示：" class="headerlink" title="提示："></a>提示：</h3><ol>
-<li>1 &lt;= grid.length == grid[0].length &lt;= 100</li>
-<li>grid[i][j] 为 0 或 1</li>
-</ol>
-<h3 id="分析："><a href="#分析：" class="headerlink" title="分析："></a>分析：</h3><p>动态规划，若是发生改变重新遍历</p>
-<p>将每个格子的步数初始化为0，第一个初始化为1。</p>
-<p>遍历时，每次从八个方向判断是否有除0外更小的步数</p>
-<h3 id="代码："><a href="#代码：" class="headerlink" title="代码："></a>代码：</h3><pre><code>class Solution {
-private:
-    bool b = true;
-public:
-    void bj(vector&lt;vector&lt;int&gt;&gt;&amp; vvi, int x, int y, vector&lt;vector&lt;int&gt;&gt;&amp; grid){
-        if(grid[x][y] != 0)
-            return;
-        int z = vvi[x][y];
-        if(x - 1 &gt;= 0 &amp;&amp; vvi[x-1][y] != 0){
-            if(vvi[x][y] == 0){
-                vvi[x][y] = vvi[x-1][y];
-            }
-            else{
-                 vvi[x][y] = min(vvi[x][y], vvi[x-1][y]);
-            }
-        }
-        if(x - 1 &gt;= 0 &amp;&amp; y - 1 &gt;= 0 &amp;&amp; vvi[x-1][y-1] != 0){
-            if(vvi[x][y] == 0){
-                vvi[x][y] = vvi[x-1][y-1];
-            }
-            else{
-                 vvi[x][y] = min(vvi[x][y], vvi[x-1][y-1]);
-            }
-        }
-        if(y - 1 &gt;= 0 &amp;&amp; vvi[x][y-1] != 0){
-            if(vvi[x][y] == 0){
-                vvi[x][y] = vvi[x][y-1];
-            }
-            else{
-                 vvi[x][y] = min(vvi[x][y], vvi[x][y-1]);
-            }
-        }
-        if(x + 1 &lt; vvi.size() &amp;&amp; y - 1 &gt;= 0 &amp;&amp; vvi[x+1][y-1] != 0){
-            if(vvi[x][y] == 0){
-                vvi[x][y] = vvi[x+1][y-1];
-            }
-            else{
-                 vvi[x][y] = min(vvi[x][y], vvi[x+1][y-1]);
-            }
-        }
-        if(x + 1 &lt; vvi.size() &amp;&amp; vvi[x+1][y] != 0){
-            if(vvi[x][y] == 0){
-                vvi[x][y] = vvi[x+1][y];
-            }
-            else{
-                 vvi[x][y] = min(vvi[x][y], vvi[x+1][y]);
-            }
-        }
-        if(x + 1 &lt; vvi.size() &amp;&amp; y + 1 &lt; vvi[0].size() &amp;&amp; vvi[x+1][y+1] != 0){
-            if(vvi[x][y] == 0){
-                vvi[x][y] = vvi[x+1][y+1];
-            }
-            else{
-                 vvi[x][y] = min(vvi[x][y], vvi[x+1][y+1]);
-            }
-        }
-        if(y + 1 &lt; vvi[0].size() &amp;&amp; vvi[x][y+1] != 0){
-            if(vvi[x][y] == 0){
-                vvi[x][y] = vvi[x][y+1];
-            }
-            else{
-                 vvi[x][y] = min(vvi[x][y], vvi[x][y+1]);
-            }
-        }
-        if(x - 1 &gt;= 0 &amp;&amp; y + 1 &lt; vvi[0].size() &amp;&amp; vvi[x-1][y+1] != 0){
-            if(vvi[x][y] == 0){
-                vvi[x][y] = vvi[x-1][y+1];
-            }
-            else{
-                 vvi[x][y] = min(vvi[x][y], vvi[x-1][y+1]);
-            }
-        }
-        if(z == 0 &amp;&amp; vvi[x][y] != 0){
-            vvi[x][y]++;
-
-            b = true;
-        }
-        else if(vvi[x][y]+1 &lt; z)
-        {
-            vvi[x][y]++;
-            b = true;
-        }
-        else{
-            vvi[x][y] = z;
-        }
-    }
-    int shortestPathBinaryMatrix(vector&lt;vector&lt;int&gt;&gt;&amp; grid) {
-        if(grid[0][0] == 1 || grid[grid.size()-1][grid[0].size()-1] == 1){
-            return -1;
-        }
-        vector&lt;vector&lt;int&gt;&gt; vvi = grid;
-        for(int i = 0; i &lt; vvi.size(); i++){
-            for(int j = 0; j &lt; vvi[0].size(); j++){
-                vvi[i][j] = 0;
-            }
-        }
-        vvi[0][0] = 1;
-        while(b == true){
-            b = false;
-            for(int i = 0; i &lt; vvi.size(); i++){
-                for(int j = 0; j &lt; vvi[0].size(); j++){
-                    if(vvi[i][j] == 1){
-                        continue;
-                    }
-                    bj(vvi, i, j, grid);
-                }
-            }
-        }
-
-        if(vvi[vvi.size()-1][vvi[0].size()-1] == 0){
-            return -1;
-        }
-        return vvi[vvi.size()-1][vvi[0].size()-1];
-    }
-};
-</code></pre><blockquote>
-<p>题目地址：<a href="https://leetcode-cn.com/contest/weekly-contest-141/problems/shortest-path-in-binary-matrix/" target="_blank" rel="noopener">https://leetcode-cn.com/contest/weekly-contest-141/problems/shortest-path-in-binary-matrix/</a></p>
-</blockquote>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2954,7 +2847,7 @@ public:
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">95</span>
+                    <span class="site-state-item-count">96</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>

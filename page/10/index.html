@@ -383,6 +383,234 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.flyingkw.com/2019/04/25/leetcode 1029-两地调度/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="张珂玮">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="张珂玮的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2019/04/25/leetcode 1029-两地调度/" class="post-title-link" itemprop="url">leetcode 1029.两地调度</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-04-25 16:14:20 / 修改时间：17:05:11" itemprop="dateCreated datePublished" datetime="2019-04-25T16:14:20+08:00">2019-04-25</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/leetcode题目/" itemprop="url" rel="index"><span itemprop="name">leetcode题目</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+              
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+            
+                <span class="post-meta-item-text">评论数：</span>
+                <a href="/2019/04/25/leetcode 1029-两地调度/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/04/25/leetcode 1029-两地调度/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="题目："><a href="#题目：" class="headerlink" title="题目："></a>题目：</h3><p>公司计划面试 2N 人。第 i 人飞往 A 市的费用为 costs[i][0]，飞往 B 市的费用为 costs[i][1]。</p>
+<p>返回将每个人都飞到某座城市的最低费用，要求每个城市都有 N 人抵达。</p>
+<h3 id="示例："><a href="#示例：" class="headerlink" title="示例："></a>示例：</h3><p>输入：[[10,20],[30,200],[400,50],[30,20]]<br>输出：110<br>解释：<br>第一个人去 A 市，费用为 10。<br>第二个人去 A 市，费用为 30。<br>第三个人去 B 市，费用为 50。<br>第四个人去 B 市，费用为 20。</p>
+<p>最低总费用为 10 + 30 + 50 + 20 = 110，每个城市都有一半的人在面试。</p>
+<h3 id="提示："><a href="#提示：" class="headerlink" title="提示："></a>提示：</h3><ol>
+<li>1 &lt;= costs.length &lt;= 100</li>
+<li>costs.length 为偶数</li>
+<li>1 &lt;= costs[i][0], costs[i][1] &lt;= 1000</li>
+</ol>
+<h3 id="分析："><a href="#分析：" class="headerlink" title="分析："></a>分析：</h3><p>将每个人飞往两地的费用相减，取绝对值，然后按照这个绝对值从大到小排列，按照这个顺序安排前往两地的人，直到其中一个人数达到N，剩下的全部前往另一地</p>
+<h3 id="代码："><a href="#代码：" class="headerlink" title="代码："></a>代码：</h3><pre><code>class Solution {
+public:
+    static bool px(vector&lt;int&gt;&amp; a, vector&lt;int&gt;&amp; b){
+        int a1 = a[0] - a[1];
+        int b1 = b[0] - b[1];
+        if(a1 &lt; 0){
+            a1 *= (-1);
+        }
+        if(b1 &lt; 0){
+            b1 *= (-1);
+        }
+        return a1 &gt; b1;
+    }
+    int twoCitySchedCost(vector&lt;vector&lt;int&gt;&gt;&amp; costs) {
+        sort(costs.begin(), costs.end(), px);
+        int a = 0;
+        int b = 0;
+        int m = 0;
+        for(int i = 0; i &lt; costs.size(); i++){
+            cout &lt;&lt; costs[i][0] - costs[i][1] &lt;&lt; &quot;\n&quot;;
+            if(costs[i][0] &lt; costs[i][1]){
+                if(a &lt; costs.size()/2){
+                    a++;
+                    m += costs[i][0];
+                }
+                else{
+                    b++;
+                    m += costs[i][1];
+                }
+            }
+            else if(costs[i][0] &gt;= costs[i][1]){
+                if(b &lt; costs.size()/2){
+                    b++;
+                    m += costs[i][1];
+                }
+                else{
+                    a++;
+                    m += costs[i][0];
+                }
+            }
+
+        }
+        return m;
+    }
+};
+</code></pre>
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://www.flyingkw.com/2019/04/18/leetcode 1028-从先序遍历还原二叉树/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1692,7 +1920,7 @@ https://blog.csdn.net/u011240016/article/details/79422462
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">95</span>
+                    <span class="site-state-item-count">96</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>

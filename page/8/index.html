@@ -383,6 +383,1909 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.flyingkw.com/2020/06/15/leetcode 1482. 制作 m 束花所需的最少天数/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="张珂玮">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="张珂玮的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2020/06/15/leetcode 1482. 制作 m 束花所需的最少天数/" class="post-title-link" itemprop="url">leetcode 1482. 制作 m 束花所需的最少天数</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2020-06-15 11:27:03 / 修改时间：11:35:53" itemprop="dateCreated datePublished" datetime="2020-06-15T11:27:03+08:00">2020-06-15</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/leetcode题目/" itemprop="url" rel="index"><span itemprop="name">leetcode题目</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+              
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+            
+                <span class="post-meta-item-text">评论数：</span>
+                <a href="/2020/06/15/leetcode 1482. 制作 m 束花所需的最少天数/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2020/06/15/leetcode 1482. 制作 m 束花所需的最少天数/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="题目："><a href="#题目：" class="headerlink" title="题目："></a>题目：</h3><p>给你一个整数数组 bloomDay，以及两个整数 m 和 k 。</p>
+<p>现需要制作 m 束花。制作花束时，需要使用花园中 相邻的 k 朵花 。</p>
+<p>花园中有 n 朵花，第 i 朵花会在 bloomDay[i] 时盛开，恰好 可以用于 一束 花中。</p>
+<p>请你返回从花园中摘 m 束花需要等待的最少的天数。如果不能摘到 m 束花则返回 -1 。</p>
+<h3 id="示例："><a href="#示例：" class="headerlink" title="示例："></a>示例：</h3><p>示例 1：</p>
+<pre><code>输入：bloomDay = [1,10,3,10,2], m = 3, k = 1
+输出：3
+解释：让我们一起观察这三天的花开过程，x 表示花开，而 _ 表示花还未开。
+现在需要制作 3 束花，每束只需要 1 朵。
+1 天后：[x, _, _, _, _]   // 只能制作 1 束花
+2 天后：[x, _, _, _, x]   // 只能制作 2 束花
+3 天后：[x, _, x, _, x]   // 可以制作 3 束花，答案为 3
+</code></pre><p>示例 2：</p>
+<pre><code>输入：bloomDay = [1,10,3,10,2], m = 3, k = 2
+输出：-1
+解释：要制作 3 束花，每束需要 2 朵花，也就是一共需要 6 朵花。而花园中只有 5 朵花，无法满足制作要求，返回 -1 。
+</code></pre><p>示例 3：</p>
+<pre><code>输入：bloomDay = [7,7,7,7,12,7,7], m = 2, k = 3
+输出：12
+解释：要制作 2 束花，每束需要 3 朵。
+花园在 7 天后和 12 天后的情况如下：
+7 天后：[x, x, x, x, _, x, x]
+可以用前 3 朵盛开的花制作第一束花。但不能使用后 3 朵盛开的花，因为它们不相邻。
+12 天后：[x, x, x, x, x, x, x]
+显然，我们可以用不同的方式制作两束花。
+</code></pre><p>示例 4：</p>
+<pre><code>输入：bloomDay = [1000000000,1000000000], m = 1, k = 1
+输出：1000000000
+解释：需要等 1000000000 天才能采到花来制作花束
+</code></pre><p>示例 5：</p>
+<pre><code>输入：bloomDay = [1,10,2,9,3,8,4,7,5,6], m = 4, k = 2
+输出：9
+</code></pre><h3 id="提示："><a href="#提示：" class="headerlink" title="提示："></a>提示：</h3><ul>
+<li>bloomDay.length == n</li>
+<li>1 &lt;= n &lt;= 10^5</li>
+<li>1 &lt;= bloomDay[i] &lt;= 10^9</li>
+<li>1 &lt;= m &lt;= 10^6</li>
+<li>1 &lt;= k &lt;= n</li>
+</ul>
+<h3 id="分析："><a href="#分析：" class="headerlink" title="分析："></a>分析：</h3><p>将所有花开的时间排序，对每个时间点开的花搜索两边连续开的花的数量。</p>
+<p>当一朵花在中间开的时候，花束的总数为：原数量-当前花左侧和右侧连续花束的数量+(当前花左侧和右侧花数量加自身 / 每束花的数量)</p>
+<p>还可以按照天数 按二分法求</p>
+<h3 id="代码："><a href="#代码：" class="headerlink" title="代码："></a>代码：</h3><pre><code>class Solution {
+public:
+    int minDays(vector&lt;int&gt;&amp; bloomDay, int m, int k) {
+        if(k*m &gt; bloomDay.size())
+            return -1;
+        map&lt;int, vector&lt;int&gt;&gt; m1;
+        vector&lt;int&gt; vi(bloomDay.size(), 0);
+        for(int i = 0; i &lt; bloomDay.size(); i++){
+            m1[bloomDay[i]].push_back(i);
+        }
+        int z = 0;
+        for(auto a = m1.begin(); a != m1.end(); a++){
+            for(int i = 0; i &lt; a-&gt;second.size(); i++){
+                vi[a-&gt;second[i]] = 1;
+                int r = 0;
+                for(int j = a-&gt;second[i]+1; j &lt; bloomDay.size() &amp;&amp; vi[j] != 0; j++){
+                    r++;
+                }
+                int l = 0;
+                for(int j = a-&gt;second[i]-1; j &gt;= 0 &amp;&amp; vi[j] != 0; j--){
+                    l++;
+                }
+                z -= r/k;
+                z -= l/k;
+                z += (r+l+1)/k;
+            }
+            if(z &gt;= m) return a-&gt;first;
+        }
+        return -1;
+    }
+};
+</code></pre><blockquote>
+<p>题目地址:<a href="https://leetcode-cn.com/problems/minimum-number-of-days-to-make-m-bouquets/" target="_blank" rel="noopener">https://leetcode-cn.com/problems/minimum-number-of-days-to-make-m-bouquets/</a></p>
+</blockquote>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.flyingkw.com/2020/06/15/leetcode 1481. 不同整数的最少数目/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="张珂玮">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="张珂玮的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2020/06/15/leetcode 1481. 不同整数的最少数目/" class="post-title-link" itemprop="url">leetcode 1481. 不同整数的最少数目</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2020-06-15 11:24:02 / 修改时间：11:26:49" itemprop="dateCreated datePublished" datetime="2020-06-15T11:24:02+08:00">2020-06-15</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/leetcode题目/" itemprop="url" rel="index"><span itemprop="name">leetcode题目</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+              
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+            
+                <span class="post-meta-item-text">评论数：</span>
+                <a href="/2020/06/15/leetcode 1481. 不同整数的最少数目/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2020/06/15/leetcode 1481. 不同整数的最少数目/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="题目："><a href="#题目：" class="headerlink" title="题目："></a>题目：</h3><p>给你一个整数数组 arr 和一个整数 k 。现需要从数组中恰好移除 k 个元素，请找出移除后数组中不同整数的最少数目。</p>
+<h3 id="示例："><a href="#示例：" class="headerlink" title="示例："></a>示例：</h3><p>示例 1：</p>
+<pre><code>输入：arr = [5,5,4], k = 1
+输出：1
+解释：移除 1 个 4 ，数组中只剩下 5 一种整数。
+</code></pre><p>示例 2：</p>
+<pre><code>输入：arr = [4,3,1,1,3,3,2], k = 3
+输出：2
+解释：先移除 4、2 ，然后再移除两个 1 中的任意 1 个或者三个 3 中的任意 1 个，最后剩下 1 和 3 两种整数。
+</code></pre><h3 id="提示："><a href="#提示：" class="headerlink" title="提示："></a>提示：</h3><ul>
+<li>1 &lt;= arr.length &lt;= 10^5</li>
+<li>1 &lt;= arr[i] &lt;= 10^9</li>
+<li>0 &lt;= k &lt;= arr.length</li>
+</ul>
+<h3 id="分析："><a href="#分析：" class="headerlink" title="分析："></a>分析：</h3><p>统计每个整数出现次数，从数量最少的元素开始移除数组</p>
+<h3 id="代码："><a href="#代码：" class="headerlink" title="代码："></a>代码：</h3><pre><code>class Solution {
+public:
+    int findLeastNumOfUniqueInts(vector&lt;int&gt;&amp; arr, int k) {
+        map&lt;int, int&gt; m;
+        for(int i = 0; i &lt; arr.size(); i++){
+            m[arr[i]]++;
+        }
+        vector&lt;int&gt; v;
+        for(auto a = m.begin(); a != m.end(); a++){
+            v.push_back(a-&gt;second);
+        }
+        sort(v.begin(), v.end());
+        for(int i = 0; i &lt; v.size(); i++){
+            k -= v[i];
+            if(k &lt; 0) return  v.size()-i;
+            if(k == 0) return v.size()-i-1;
+        }
+        return 0;
+    }
+};
+</code></pre><blockquote>
+<p>题目地址:<a href="https://leetcode-cn.com/problems/least-number-of-unique-integers-after-k-removals/" target="_blank" rel="noopener">https://leetcode-cn.com/problems/least-number-of-unique-integers-after-k-removals/</a></p>
+</blockquote>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.flyingkw.com/2020/06/15/leetcode 1480. 一维数组的动态和/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="张珂玮">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="张珂玮的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2020/06/15/leetcode 1480. 一维数组的动态和/" class="post-title-link" itemprop="url">leetcode 1480. 一维数组的动态和</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2020-06-15 11:15:01 / 修改时间：11:24:19" itemprop="dateCreated datePublished" datetime="2020-06-15T11:15:01+08:00">2020-06-15</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/leetcode题目/" itemprop="url" rel="index"><span itemprop="name">leetcode题目</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+              
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+            
+                <span class="post-meta-item-text">评论数：</span>
+                <a href="/2020/06/15/leetcode 1480. 一维数组的动态和/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2020/06/15/leetcode 1480. 一维数组的动态和/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="题目："><a href="#题目：" class="headerlink" title="题目："></a>题目：</h3><p>给你一个数组 nums 。数组「动态和」的计算公式为：runningSum[i] = sum(nums[0]…nums[i]) 。</p>
+<p>请返回 nums 的动态和。</p>
+<h3 id="示例："><a href="#示例：" class="headerlink" title="示例："></a>示例：</h3><p>示例 1：</p>
+<pre><code>输入：nums = [1,2,3,4]
+输出：[1,3,6,10]
+解释：动态和计算过程为 [1, 1+2, 1+2+3, 1+2+3+4] 。
+</code></pre><p>示例 2：</p>
+<pre><code>输入：nums = [1,1,1,1,1]
+输出：[1,2,3,4,5]
+解释：动态和计算过程为 [1, 1+1, 1+1+1, 1+1+1+1, 1+1+1+1+1] 。
+</code></pre><p>示例 3：</p>
+<pre><code>输入：nums = [3,1,2,10,1]
+输出：[3,4,6,16,17]
+</code></pre><h3 id="提示："><a href="#提示：" class="headerlink" title="提示："></a>提示：</h3><ul>
+<li>1 &lt;= nums.length &lt;= 1000</li>
+<li>-10^6 &lt;= nums[i] &lt;= 10^6</li>
+</ul>
+<h3 id="分析："><a href="#分析：" class="headerlink" title="分析："></a>分析：</h3><p>直接对原数组求和即可</p>
+<h3 id="代码："><a href="#代码：" class="headerlink" title="代码："></a>代码：</h3><pre><code>class Solution {
+public:
+    vector&lt;int&gt; runningSum(vector&lt;int&gt;&amp; nums) {
+        for(int i = 1; i &lt; nums.size(); i++){
+            nums[i] = nums[i-1]+nums[i];
+        }
+        return nums;
+    }
+};
+</code></pre><blockquote>
+<p>题目地址:<a href="https://leetcode-cn.com/problems/running-sum-of-1d-array/" target="_blank" rel="noopener">https://leetcode-cn.com/problems/running-sum-of-1d-array/</a></p>
+</blockquote>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.flyingkw.com/2020/06/08/leetcode 5431. 给房子涂色 III/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="张珂玮">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="张珂玮的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2020/06/08/leetcode 5431. 给房子涂色 III/" class="post-title-link" itemprop="url">leetcode 5431. 给房子涂色 III</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2020-06-08 11:43:04 / 修改时间：11:58:57" itemprop="dateCreated datePublished" datetime="2020-06-08T11:43:04+08:00">2020-06-08</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/leetcode题目/" itemprop="url" rel="index"><span itemprop="name">leetcode题目</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+              
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+            
+                <span class="post-meta-item-text">评论数：</span>
+                <a href="/2020/06/08/leetcode 5431. 给房子涂色 III/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2020/06/08/leetcode 5431. 给房子涂色 III/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="题目："><a href="#题目：" class="headerlink" title="题目："></a>题目：</h3><p>在一个小城市里，有 m 个房子排成一排，你需要给每个房子涂上 n 种颜色之一（颜色编号为 1 到 n ）。有的房子去年夏天已经涂过颜色了，所以这些房子不需要被重新涂色。</p>
+<p>我们将连续相同颜色尽可能多的房子称为一个街区。（比方说 houses = [1,2,2,3,3,2,1,1] ，它包含 5 个街区  [{1}, {2,2}, {3,3}, {2}, {1,1}] 。）</p>
+<p>给你一个数组 houses ，一个 m * n 的矩阵 cost 和一个整数 target ，其中：</p>
+<ul>
+<li>houses[i]：是第 i 个房子的颜色，0 表示这个房子还没有被涂色。</li>
+<li>cost[i][j]：是将第 i 个房子涂成颜色 j+1 的花费。</li>
+</ul>
+<p>请你返回房子涂色方案的最小总花费，使得每个房子都被涂色后，恰好组成 target 个街区。如果没有可用的涂色方案，请返回 -1 。</p>
+<h3 id="示例："><a href="#示例：" class="headerlink" title="示例："></a>示例：</h3><p>示例 1：</p>
+<pre><code>输入：houses = [0,0,0,0,0], cost = [[1,10],[10,1],[10,1],[1,10],[5,1]], m = 5, n = 2, target = 3
+输出：9
+解释：房子涂色方案为 [1,2,2,1,1]
+此方案包含 target = 3 个街区，分别是 [{1}, {2,2}, {1,1}]。
+涂色的总花费为 (1 + 1 + 1 + 1 + 5) = 9。
+</code></pre><p>示例 2：</p>
+<pre><code>输入：houses = [0,2,1,2,0], cost = [[1,10],[10,1],[10,1],[1,10],[5,1]], m = 5, n = 2, target = 3
+输出：11
+解释：有的房子已经被涂色了，在此基础上涂色方案为 [2,2,1,2,2]
+此方案包含 target = 3 个街区，分别是 [{2,2}, {1}, {2,2}]。
+给第一个和最后一个房子涂色的花费为 (10 + 1) = 11。
+</code></pre><p>示例 3：</p>
+<pre><code>输入：houses = [0,0,0,0,0], cost = [[1,10],[10,1],[1,10],[10,1],[1,10]], m = 5, n = 2, target = 5
+输出：5
+</code></pre><p>示例 4：</p>
+<pre><code>输入：houses = [3,1,2,3], cost = [[1,1,1],[1,1,1],[1,1,1],[1,1,1]], m = 4, n = 3, target = 3
+输出：-1
+解释：房子已经被涂色并组成了 4 个街区，分别是 [{3},{1},{2},{3}] ，无法形成 target = 3 个街区。
+</code></pre><h3 id="提示："><a href="#提示：" class="headerlink" title="提示："></a>提示：</h3><ul>
+<li>m == houses.length == cost.length</li>
+<li>n == cost[i].length</li>
+<li>1 &lt;= m &lt;= 100</li>
+<li>1 &lt;= n &lt;= 20</li>
+<li>1 &lt;= target &lt;= m</li>
+<li>0 &lt;= houses[i] &lt;= n</li>
+<li>1 &lt;= cost[i][j] &lt;= 10^4</li>
+</ul>
+<h3 id="分析："><a href="#分析：" class="headerlink" title="分析："></a>分析：</h3><p>动态规划</p>
+<p>dp[i][j][k] 当第i个房子，最后颜色为j，分成k个街区时的花费</p>
+<h3 id="代码："><a href="#代码：" class="headerlink" title="代码："></a>代码：</h3><pre><code>class Solution {
+public:
+    int minCost(vector&lt;int&gt;&amp; houses, vector&lt;vector&lt;int&gt;&gt;&amp; cost, int m, int n, int target) {
+        // i个房子，最后颜色为j，k个街区
+        vector&lt;vector&lt;vector&lt;int&gt;&gt;&gt; dp(m+1, vector&lt;vector&lt;int&gt;&gt;(n+1, vector&lt;int&gt;(m+1, INT_MAX)));
+        //初始化，第0个房子每种颜色的花费，值为INT_MAX的表示无可用涂色方案
+        for(int j = 1; j &lt;= n; j++){ 
+            if(houses[0] == 0) dp[0][j][0] = cost[0][j-1];
+            else if(houses[0] == j) dp[0][j][0] = 0;
+        }
+
+        for(int i = 0; i &lt; m-1; i++){ 
+            for(int j = 1; j &lt;= n; j++){ 
+                for(int k = 0; k &lt;= i; k++){ 
+                    for(int l = 1; l &lt;= n; l++){ 
+                        // 当值为INT_MAX时表示无可行方案，直接跳过
+                        if(dp[i][j][k] == INT_MAX) continue; 
+                        // 新的房子颜色刚好为l时的情况
+                        if(houses[i+1] == l){
+                            // 如果新的房子颜色和上一个房子相等，街区不会增加，否则街区数量增加
+                            if(l == j) dp[i+1][l][k] = min(dp[i+1][l][k], dp[i][j][k]);
+                            else dp[i+1][l][k+1] = min(dp[i+1][l][k+1], dp[i][j][k]);
+                            continue;
+                        }
+                        // 如果新的房子没有上色
+                        if(houses[i+1] == 0){
+                            // 两种上色可能
+                            if(l == j){
+                                dp[i+1][l][k] = min(dp[i+1][l][k], dp[i][j][k] + cost[i+1][l-1]);
+                            }
+                            else{
+                                dp[i+1][l][k+1] = min(dp[i+1][l][k+1], dp[i][j][k] + cost[i+1][l-1]);
+                            }
+                        }
+
+                    }
+                }
+            }
+        }
+        int ret = INT_MAX;
+        // 获得涂完所有房子并且街区数量为target-1（从0开始）的最小花费
+        for(int i = 1; i &lt;= n; i++){
+            if(dp[m-1][i][target-1] &lt; ret)
+                ret = dp[m-1][i][target-1];
+        }
+        if(ret == INT_MAX) return -1; //如果为INT_MAX的表示无可用涂色方案，返回-1
+        return ret;
+    }
+};
+</code></pre><blockquote>
+<p>题目地址:<a href="https://leetcode-cn.com/problems/paint-house-iii/submissions/" target="_blank" rel="noopener">https://leetcode-cn.com/problems/paint-house-iii/submissions/</a></p>
+</blockquote>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.flyingkw.com/2020/06/08/leetcode 5430. 设计浏览器历史记录/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="张珂玮">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="张珂玮的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2020/06/08/leetcode 5430. 设计浏览器历史记录/" class="post-title-link" itemprop="url">leetcode 5430. 设计浏览器历史记录</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2020-06-08 11:23:03 / 修改时间：11:36:20" itemprop="dateCreated datePublished" datetime="2020-06-08T11:23:03+08:00">2020-06-08</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/leetcode题目/" itemprop="url" rel="index"><span itemprop="name">leetcode题目</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+              
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+            
+                <span class="post-meta-item-text">评论数：</span>
+                <a href="/2020/06/08/leetcode 5430. 设计浏览器历史记录/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2020/06/08/leetcode 5430. 设计浏览器历史记录/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="题目："><a href="#题目：" class="headerlink" title="题目："></a>题目：</h3><p>你有一个只支持单个标签页的 浏览器 ，最开始你浏览的网页是 homepage ，你可以访问其他的网站 url ，也可以在浏览历史中后退 steps 步或前进 steps 步。</p>
+<p>请你实现 BrowserHistory 类：</p>
+<ul>
+<li>BrowserHistory(string homepage) ，用 homepage 初始化浏览器类。</li>
+<li>void visit(string url) 从当前页跳转访问 url 对应的页面  。执行此操作会把浏览历史前进的记录全部删除。</li>
+<li>string back(int steps) 在浏览历史中后退 steps 步。如果你只能在浏览历史中后退至多 x 步且 steps &gt; x ，那么你只后退 x 步。请返回后退 至多 steps 步以后的 url 。</li>
+<li>string forward(int steps) 在浏览历史中前进 steps 步。如果你只能在浏览历史中前进至多 x 步且 steps &gt; x ，那么你只前进 x 步。请返回前进 至多 steps步以后的 url 。</li>
+</ul>
+<h3 id="示例："><a href="#示例：" class="headerlink" title="示例："></a>示例：</h3><pre><code>输入：
+[&quot;BrowserHistory&quot;,&quot;visit&quot;,&quot;visit&quot;,&quot;visit&quot;,&quot;back&quot;,&quot;back&quot;,&quot;forward&quot;,&quot;visit&quot;,&quot;forward&quot;,&quot;back&quot;,&quot;back&quot;]
+[[&quot;leetcode.com&quot;],[&quot;google.com&quot;],[&quot;facebook.com&quot;],[&quot;youtube.com&quot;],[1],[1],[1],[&quot;linkedin.com&quot;],[2],[2],[7]]
+输出：
+[null,null,null,null,&quot;facebook.com&quot;,&quot;google.com&quot;,&quot;facebook.com&quot;,null,&quot;linkedin.com&quot;,&quot;google.com&quot;,&quot;leetcode.com&quot;]
+
+解释：
+BrowserHistory browserHistory = new BrowserHistory(&quot;leetcode.com&quot;);
+browserHistory.visit(&quot;google.com&quot;);       // 你原本在浏览 &quot;leetcode.com&quot; 。访问 &quot;google.com&quot;
+browserHistory.visit(&quot;facebook.com&quot;);     // 你原本在浏览 &quot;google.com&quot; 。访问 &quot;facebook.com&quot;
+browserHistory.visit(&quot;youtube.com&quot;);      // 你原本在浏览 &quot;facebook.com&quot; 。访问 &quot;youtube.com&quot;
+browserHistory.back(1);                   // 你原本在浏览 &quot;youtube.com&quot; ，后退到 &quot;facebook.com&quot; 并返回 &quot;facebook.com&quot;
+browserHistory.back(1);                   // 你原本在浏览 &quot;facebook.com&quot; ，后退到 &quot;google.com&quot; 并返回 &quot;google.com&quot;
+browserHistory.forward(1);                // 你原本在浏览 &quot;google.com&quot; ，前进到 &quot;facebook.com&quot; 并返回 &quot;facebook.com&quot;
+browserHistory.visit(&quot;linkedin.com&quot;);     // 你原本在浏览 &quot;facebook.com&quot; 。 访问 &quot;linkedin.com&quot;
+browserHistory.forward(2);                // 你原本在浏览 &quot;linkedin.com&quot; ，你无法前进任何步数。
+browserHistory.back(2);                   // 你原本在浏览 &quot;linkedin.com&quot; ，后退两步依次先到 &quot;facebook.com&quot; ，然后到 &quot;google.com&quot; ，并返回 &quot;google.com&quot;
+browserHistory.back(7);                   // 你原本在浏览 &quot;google.com&quot;， 你只能后退一步到 &quot;leetcode.com&quot; ，并返回 &quot;leetcode.com&quot;
+</code></pre><h3 id="提示："><a href="#提示：" class="headerlink" title="提示："></a>提示：</h3><ul>
+<li>1 &lt;= homepage.length &lt;= 20</li>
+<li>1 &lt;= url.length &lt;= 20</li>
+<li>1 &lt;= steps &lt;= 100</li>
+<li>homepage 和 url 都只包含 ‘.’ 或者小写英文字母。</li>
+<li>最多调用 5000 次 visit， back 和 forward 函数。</li>
+</ul>
+<h3 id="分析："><a href="#分析：" class="headerlink" title="分析："></a>分析：</h3><p>使用vector来存储访问过的网站，用变量i来记录当前网站是vector中的哪一个</p>
+<h3 id="代码："><a href="#代码：" class="headerlink" title="代码："></a>代码：</h3><pre><code>class BrowserHistory {
+private:
+    vector&lt;string&gt; vs;
+    int i;
+public:
+    BrowserHistory(string homepage) { // 往vs添加第一个网址，将i置为0
+        vs.push_back(homepage);
+        i = 0;
+    }
+
+    void visit(string url) { // 将当前网页之后的页面全部删除，添加新的页面，i++
+        vs.erase(vs.begin()+i+1, vs.end());
+        vs.push_back(url);
+        i++;
+    }
+
+    string back(int steps) { // 按照要求移动指针i，当i小于0的时候置为0
+        i -= steps;
+        if(i &lt; 0) i = 0;
+        return vs[i];
+    }
+
+    string forward(int steps) { // 按照要求移动指针i，当i大于vs的最后一位的时候置为最后一位
+        i += steps;
+        if(i &gt;= vs.size()) i = vs.size()-1;
+        return vs[i];
+    }
+};
+
+/**
+ * Your BrowserHistory object will be instantiated and called as such:
+ * BrowserHistory* obj = new BrowserHistory(homepage);
+ * obj-&gt;visit(url);
+ * string param_2 = obj-&gt;back(steps);
+ * string param_3 = obj-&gt;forward(steps);
+ */
+</code></pre><blockquote>
+<p>题目地址:<a href="https://leetcode-cn.com/problems/design-browser-history/submissions/" target="_blank" rel="noopener">https://leetcode-cn.com/problems/design-browser-history/submissions/</a></p>
+</blockquote>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.flyingkw.com/2020/06/08/leetcode 5429. 数组中的 k 个最强值/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="张珂玮">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="张珂玮的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2020/06/08/leetcode 5429. 数组中的 k 个最强值/" class="post-title-link" itemprop="url">leetcode 5429. 数组中的 k 个最强值</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2020-06-08 11:05:02 / 修改时间：11:18:42" itemprop="dateCreated datePublished" datetime="2020-06-08T11:05:02+08:00">2020-06-08</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/leetcode题目/" itemprop="url" rel="index"><span itemprop="name">leetcode题目</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+              
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+            
+                <span class="post-meta-item-text">评论数：</span>
+                <a href="/2020/06/08/leetcode 5429. 数组中的 k 个最强值/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2020/06/08/leetcode 5429. 数组中的 k 个最强值/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="题目："><a href="#题目：" class="headerlink" title="题目："></a>题目：</h3><p>给你一个整数数组 arr 和一个整数 k 。</p>
+<p>设 m 为数组的中位数，只要满足下述两个前提之一，就可以判定 arr[i] 的值比 arr[j] 的值更强：</p>
+<ul>
+<li>|arr[i] - m| &gt; |arr[j] - m|</li>
+<li>|arr[i] - m| == |arr[j] - m|，且 arr[i] &gt; arr[j]</li>
+</ul>
+<p>请返回由数组中最强的 k 个值组成的列表。答案可以以 任意顺序 返回。</p>
+<p>中位数 是一个有序整数列表中处于中间位置的值。形式上，如果列表的长度为 n ，那么中位数就是该有序列表（下标从 0 开始）中位于 ((n - 1) / 2) 的元素。</p>
+<ul>
+<li>例如 arr = [6, -3, 7, 2, 11]，n = 5：数组排序后得到 arr = [-3, 2, 6, 7, 11] ，数组的中间位置为 m = ((5 - 1) / 2) = 2 ，中位数 arr[m] 的值为 6 。</li>
+<li>例如 arr = [-7, 22, 17, 3]，n = 4：数组排序后得到 arr = [-7, 3, 17, 22] ，数组的中间位置为 m = ((4 - 1) / 2) = 1 ，中位数 arr[m] 的值为 3 。</li>
+</ul>
+<h3 id="示例："><a href="#示例：" class="headerlink" title="示例："></a>示例：</h3><p>示例 1：</p>
+<pre><code>输入：arr = [1,2,3,4,5], k = 2
+输出：[5,1]
+解释：中位数为 3，按从强到弱顺序排序后，数组变为 [5,1,4,2,3]。最强的两个元素是 [5, 1]。[1, 5] 也是正确答案。
+注意，尽管 |5 - 3| == |1 - 3| ，但是 5 比 1 更强，因为 5 &gt; 1 。
+</code></pre><p>示例 2：</p>
+<pre><code>输入：arr = [1,1,3,5,5], k = 2
+输出：[5,5]
+解释：中位数为 3, 按从强到弱顺序排序后，数组变为 [5,5,1,1,3]。最强的两个元素是 [5, 5]。
+</code></pre><p>示例 3：</p>
+<pre><code>输入：arr = [6,7,11,7,6,8], k = 5
+输出：[11,8,6,6,7]
+解释：中位数为 7, 按从强到弱顺序排序后，数组变为 [11,8,6,6,7,7]。
+[11,8,6,6,7] 的任何排列都是正确答案。
+</code></pre><p>示例 4：</p>
+<pre><code>输入：arr = [6,-3,7,2,11], k = 3
+输出：[-3,11,2]
+</code></pre><p>示例 5：</p>
+<pre><code>输入：arr = [-7,22,17,3], k = 2
+输出：[22,17]
+</code></pre><h3 id="提示："><a href="#提示：" class="headerlink" title="提示："></a>提示：</h3><ul>
+<li>1 &lt;= arr.length &lt;= 10^5</li>
+<li>-10^5 &lt;= arr[i] &lt;= 10^5</li>
+<li>1 &lt;= k &lt;= arr.length</li>
+</ul>
+<h3 id="分析："><a href="#分析：" class="headerlink" title="分析："></a>分析：</h3><p>直接使用sort排序，按照题目的排序方式写个函数即可</p>
+<h3 id="代码："><a href="#代码：" class="headerlink" title="代码："></a>代码：</h3><pre><code>int m;
+bool bj(int a, int b){
+    int a1 = a-m;
+    a1 = a1 &lt; 0 ? a1*-1 : a1;
+    int b1 = b-m;
+    b1 = b1 &lt; 0 ? b1*-1 : b1;
+    if(a1 &gt; b1)
+        return true;
+    else if(a1 &lt; b1)
+        return false;
+    else if(a &gt; b)
+        return true;
+    else
+        return false;
+}
+class Solution {
+public:
+
+    vector&lt;int&gt; getStrongest(vector&lt;int&gt;&amp; arr, int k) {
+        sort(arr.begin(), arr.end());
+        m = arr[(arr.size()-1)/2];
+        sort(arr.begin(), arr.end(), bj);
+        vector&lt;int&gt; ret;
+        for(int i = 0; i &lt; k; i++){
+            ret.push_back(arr[i]);
+        }
+        return ret;
+    }
+};
+</code></pre><blockquote>
+<p>题目地址:<a href="https://leetcode-cn.com/problems/the-k-strongest-values-in-an-array/" target="_blank" rel="noopener">https://leetcode-cn.com/problems/the-k-strongest-values-in-an-array/</a></p>
+</blockquote>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.flyingkw.com/2020/06/08/leetcode 5428. 重新排列数组/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="张珂玮">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="张珂玮的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2020/06/08/leetcode 5428. 重新排列数组/" class="post-title-link" itemprop="url">leetcode 5428. 重新排列数组</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2020-06-08 10:55:01 / 修改时间：11:02:51" itemprop="dateCreated datePublished" datetime="2020-06-08T10:55:01+08:00">2020-06-08</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/leetcode题目/" itemprop="url" rel="index"><span itemprop="name">leetcode题目</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+              
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+            
+                <span class="post-meta-item-text">评论数：</span>
+                <a href="/2020/06/08/leetcode 5428. 重新排列数组/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2020/06/08/leetcode 5428. 重新排列数组/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="题目："><a href="#题目：" class="headerlink" title="题目："></a>题目：</h3><p>给你一个数组 nums ，数组中有 2n 个元素，按 [x1,x2,…,xn,y1,y2,…,yn] 的格式排列。</p>
+<p>请你将数组按 [x1,y1,x2,y2,…,xn,yn] 格式重新排列，返回重排后的数组。</p>
+<h3 id="示例："><a href="#示例：" class="headerlink" title="示例："></a>示例：</h3><p>示例 1：</p>
+<pre><code>输入：nums = [2,5,1,3,4,7], n = 3
+输出：[2,3,5,4,1,7] 
+解释：由于 x1=2, x2=5, x3=1, y1=3, y2=4, y3=7 ，所以答案为 [2,3,5,4,1,7]
+</code></pre><p>示例 2：</p>
+<pre><code>输入：nums = [1,2,3,4,4,3,2,1], n = 4
+输出：[1,4,2,3,3,2,4,1]
+</code></pre><p>示例 3：</p>
+<pre><code>输入：nums = [1,1,2,2], n = 2
+输出：[1,2,1,2]
+</code></pre><h3 id="提示："><a href="#提示：" class="headerlink" title="提示："></a>提示：</h3><ul>
+<li>1 &lt;= n &lt;= 500</li>
+<li>nums.length == 2n</li>
+<li>1 &lt;= nums[i] &lt;= 10^3</li>
+</ul>
+<h3 id="分析："><a href="#分析：" class="headerlink" title="分析："></a>分析：</h3><p>两个指针，一个指向前半部分，一个指向后半部分，按照格式重新排列即可</p>
+<h3 id="代码："><a href="#代码：" class="headerlink" title="代码："></a>代码：</h3><pre><code>class Solution {
+public:
+    vector&lt;int&gt; shuffle(vector&lt;int&gt;&amp; nums, int n) {
+        vector&lt;int&gt; ret;
+        for(int i = 0, j = nums.size()/2; i &lt; nums.size()/2; i++, j++){
+            ret.push_back(nums[i]);
+            ret.push_back(nums[j]);
+        }
+        return ret;
+    }
+};
+</code></pre><blockquote>
+<p>题目地址:<a href="https://leetcode-cn.com/problems/shuffle-the-array/" target="_blank" rel="noopener">https://leetcode-cn.com/problems/shuffle-the-array/</a></p>
+</blockquote>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.flyingkw.com/2020/06/01/leetcode 5427. 两个盒子中球的颜色数相同的概率/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="张珂玮">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="张珂玮的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2020/06/01/leetcode 5427. 两个盒子中球的颜色数相同的概率/" class="post-title-link" itemprop="url">leetcode 5427. 两个盒子中球的颜色数相同的概率</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2020-06-01 10:38:04 / 修改时间：11:42:07" itemprop="dateCreated datePublished" datetime="2020-06-01T10:38:04+08:00">2020-06-01</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/leetcode题目/" itemprop="url" rel="index"><span itemprop="name">leetcode题目</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+              
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+            
+                <span class="post-meta-item-text">评论数：</span>
+                <a href="/2020/06/01/leetcode 5427. 两个盒子中球的颜色数相同的概率/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2020/06/01/leetcode 5427. 两个盒子中球的颜色数相同的概率/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="题目："><a href="#题目：" class="headerlink" title="题目："></a>题目：</h3><p>桌面上有 2n 个颜色不完全相同的球，球上的颜色共有 k 种。给你一个大小为 k 的整数数组 balls ，其中 balls[i] 是颜色为 i 的球的数量。</p>
+<p>所有的球都已经 随机打乱顺序 ，前 n 个球放入第一个盒子，后 n 个球放入另一个盒子（请认真阅读示例 2 的解释部分）。</p>
+<p>注意：这两个盒子是不同的。例如，两个球颜色分别为 a 和 b，盒子分别为 [] 和 ()，那么 [a] (b) 和 [b] (a) 这两种分配方式是不同的（请认真阅读示例 1 的解释部分）。</p>
+<p>请计算「两个盒子中球的颜色数相同」的情况的概率。</p>
+<h3 id="示例："><a href="#示例：" class="headerlink" title="示例："></a>示例：</h3><p>示例 1：</p>
+<pre><code>输入：balls = [1,1]
+输出：1.00000
+解释：球平均分配的方式只有两种：
+- 颜色为 1 的球放入第一个盒子，颜色为 2 的球放入第二个盒子
+- 颜色为 2 的球放入第一个盒子，颜色为 1 的球放入第二个盒子
+这两种分配，两个盒子中球的颜色数都相同。所以概率为 2/2 = 1 。
+</code></pre><p>示例 2：</p>
+<pre><code>输入：balls = [2,1,1]
+输出：0.66667
+解释：球的列表为 [1, 1, 2, 3]
+随机打乱，得到 12 种等概率的不同打乱方案，每种方案概率为 1/12 ：
+[1,1 / 2,3], [1,1 / 3,2], [1,2 / 1,3], [1,2 / 3,1], [1,3 / 1,2], [1,3 / 2,1], [2,1 / 1,3], [2,1 / 3,1], [2,3 / 1,1], [3,1 / 1,2], [3,1 / 2,1], [3,2 / 1,1]
+然后，我们将前两个球放入第一个盒子，后两个球放入第二个盒子。
+这 12 种可能的随机打乱方式中的 8 种满足「两个盒子中球的颜色数相同」。
+概率 = 8/12 = 0.66667
+</code></pre><p>示例 3：</p>
+<pre><code>输入：balls = [1,2,1,2]
+输出：0.60000
+解释：球的列表为 [1, 2, 2, 3, 4, 4]。要想显示所有 180 种随机打乱方案是很难的，但只检查「两个盒子中球的颜色数相同」的 108 种情况是比较容易的。
+概率 = 108 / 180 = 0.6 。
+</code></pre><p>示例 4：</p>
+<pre><code>输入：balls = [3,2,1]
+输出：0.30000
+解释：球的列表为 [1, 1, 1, 2, 2, 3]。要想显示所有 60 种随机打乱方案是很难的，但只检查「两个盒子中球的颜色数相同」的 18 种情况是比较容易的。
+概率 = 18 / 60 = 0.3 。
+</code></pre><p>示例 5：</p>
+<pre><code>输入：balls = [6,6,6,6,6,6]
+输出：0.90327
+</code></pre><h3 id="提示："><a href="#提示：" class="headerlink" title="提示："></a>提示：</h3><ul>
+<li>1 &lt;= balls.length &lt;= 8</li>
+<li>1 &lt;= balls[i] &lt;= 6</li>
+<li>sum(balls) 是偶数</li>
+<li>答案与真实值误差在 10^-5 以内，则被视为正确答案</li>
+</ul>
+<h3 id="分析："><a href="#分析：" class="headerlink" title="分析："></a>分析：</h3><p>首先要知道求可重复排列的方法 </p>
+<blockquote>
+<p><a href="https://www.bilibili.com/video/BV1PA411q7c5?from=search&amp;seid=2927596959961254448" target="_blank" rel="noopener">https://www.bilibili.com/video/BV1PA411q7c5?from=search&amp;seid=2927596959961254448</a><br>39分钟时有讲</p>
+</blockquote>
+<p>使用dfs遍历</p>
+<p>每次遍历往里面添加一种颜色，将这种颜色所有分配方式尝试一遍</p>
+<p>如果遇到左边盒子大于一半的情况，就返回，因为已经不成立了</p>
+<p>直到所有颜色取完，判断是否左右两边的颜色数量相同，若相同使用上面公式求出所有排列组合的数量</p>
+<p>将所有的可能全部相加再除以所有的排列方式即可</p>
+<h3 id="代码："><a href="#代码：" class="headerlink" title="代码："></a>代码：</h3><pre><code>class Solution {
+private:
+    int n;
+    int bsize;
+    long double fa;
+
+public:
+    long double cj(int a){
+        long double ret = 1;
+        for(int i = 1; i &lt;=a; i++){
+            ret *= i;
+        }
+        return ret;
+    }
+    void dfs(int y, int l, int r, vector&lt;int&gt; &amp;ly, vector&lt;int&gt; &amp;ry, vector&lt;int&gt;&amp; balls){
+
+        if(l &gt; n || r &gt; n) return;
+        if(y == bsize){
+            if(ly.size() == ry.size()){
+                long double z = cj(n);
+                for(int i = 0; i &lt; ly.size(); i++){
+                    z /= cj(ly[i]);
+                }
+                long double z1 = cj(n);
+                for(int i = 0; i &lt; ry.size(); i++){
+                    z1 /= cj(ry[i]);
+                }
+                fa += z * z1;
+            }
+            return;
+        }
+        for(int i = 0; i &lt;= balls[y]; i++){
+            if(i &gt; 0) ly.push_back(i);
+            if(balls[y]-i &gt; 0) ry.push_back(balls[y]-i);
+            dfs(y+1, l+i, r+balls[y]-i, ly, ry, balls);
+            if(i &gt; 0) ly.pop_back();
+            if(balls[y]-i &gt; 0) ry.pop_back();
+        }
+
+    }
+    double getProbability(vector&lt;int&gt;&amp; balls) {
+        vector&lt;int&gt; ly;
+        vector&lt;int&gt; ry; 
+        for(int i = 0; i &lt; balls.size(); i++){
+            n += balls[i];
+        }
+        n /= 2;
+        bsize = balls.size();
+        fa = 0;
+
+        dfs(0, 0, 0, ly, ry, balls);
+        long double z = cj(2*n);
+        for(int i = 0; i &lt; balls.size(); i++){
+            z /= cj(balls[i]);
+        }
+        return double(fa) / z;
+
+    }
+};
+</code></pre><blockquote>
+<p>题目地址:<a href="https://leetcode-cn.com/problems/probability-of-a-two-boxes-having-the-same-number-of-distinct-balls/" target="_blank" rel="noopener">https://leetcode-cn.com/problems/probability-of-a-two-boxes-having-the-same-number-of-distinct-balls/</a></p>
+</blockquote>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://www.flyingkw.com/2020/06/01/leetcode 5426. 重新规划路线/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -819,1854 +2722,11 @@ public:
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.flyingkw.com/2020/06/01/leetcode 5424. 数组中两元素的最大乘积/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="张珂玮">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="张珂玮的博客">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2020/06/01/leetcode 5424. 数组中两元素的最大乘积/" class="post-title-link" itemprop="url">leetcode 5424. 数组中两元素的最大乘积</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2020-06-01 10:27:01 / 修改时间：10:32:52" itemprop="dateCreated datePublished" datetime="2020-06-01T10:27:01+08:00">2020-06-01</time>
-            
-
-            
-              
-
-              
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/leetcode题目/" itemprop="url" rel="index"><span itemprop="name">leetcode题目</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-            
-              
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-            
-                <span class="post-meta-item-text">评论数：</span>
-                <a href="/2020/06/01/leetcode 5424. 数组中两元素的最大乘积/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2020/06/01/leetcode 5424. 数组中两元素的最大乘积/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h3 id="题目："><a href="#题目：" class="headerlink" title="题目："></a>题目：</h3><p>给你一个整数数组 nums，请你选择数组的两个不同下标 i 和 j，使 (nums[i]-1)*(nums[j]-1) 取得最大值。</p>
-<p>请你计算并返回该式的最大值。</p>
-<p>来源：力扣（LeetCode）<br>链接：<a href="https://leetcode-cn.com/problems/maximum-product-of-two-elements-in-an-array" target="_blank" rel="noopener">https://leetcode-cn.com/problems/maximum-product-of-two-elements-in-an-array</a><br>著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。</p>
-<h3 id="示例："><a href="#示例：" class="headerlink" title="示例："></a>示例：</h3><p>示例 1：</p>
-<pre><code>输入：nums = [3,4,5,2]
-输出：12 
-解释：如果选择下标 i=1 和 j=2（下标从 0 开始），则可以获得最大值，(nums[1]-1)*(nums[2]-1) = (4-1)*(5-1) = 3*4 = 12 。 
-</code></pre><p>示例 2：</p>
-<pre><code>输入：nums = [1,5,4,5]
-输出：16
-解释：选择下标 i=1 和 j=3（下标从 0 开始），则可以获得最大值 (5-1)*(5-1) = 16 。
-</code></pre><p>示例 3：</p>
-<pre><code>输入：nums = [3,7]
-输出：12
-</code></pre><h3 id="提示："><a href="#提示：" class="headerlink" title="提示："></a>提示：</h3><ul>
-<li>2 &lt;= nums.length &lt;= 500</li>
-<li>1 &lt;= nums[i] &lt;= 10^3</li>
-</ul>
-<h3 id="分析："><a href="#分析：" class="headerlink" title="分析："></a>分析：</h3><p>直接遍历找出两个最大值，按规则运算即可</p>
-<h3 id="代码："><a href="#代码：" class="headerlink" title="代码："></a>代码：</h3><pre><code>class Solution {
-public:
-    int maxProduct(vector&lt;int&gt;&amp; nums) {
-        sort(nums.begin(), nums.end());
-        return (nums[nums.size()-1]-1) * (nums[nums.size()-2]-1);
-    }
-};
-</code></pre><blockquote>
-<p>题目地址:<a href="https://leetcode-cn.com/problems/maximum-product-of-two-elements-in-an-array/" target="_blank" rel="noopener">https://leetcode-cn.com/problems/maximum-product-of-two-elements-in-an-array/</a></p>
-</blockquote>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.flyingkw.com/2020/05/25/leetcode 5419. 两个子序列的最大点积/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="张珂玮">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="张珂玮的博客">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2020/05/25/leetcode 5419. 两个子序列的最大点积/" class="post-title-link" itemprop="url">leetcode 5419. 两个子序列的最大点积</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2020-05-25 11:54:04 / 修改时间：11:59:57" itemprop="dateCreated datePublished" datetime="2020-05-25T11:54:04+08:00">2020-05-25</time>
-            
-
-            
-              
-
-              
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/leetcode题目/" itemprop="url" rel="index"><span itemprop="name">leetcode题目</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-            
-              
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-            
-                <span class="post-meta-item-text">评论数：</span>
-                <a href="/2020/05/25/leetcode 5419. 两个子序列的最大点积/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2020/05/25/leetcode 5419. 两个子序列的最大点积/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h3 id="题目："><a href="#题目：" class="headerlink" title="题目："></a>题目：</h3><p>给你两个数组 nums1 和 nums2 。</p>
-<p>请你返回 nums1 和 nums2 中两个长度相同的 非空 子序列的最大点积。</p>
-<p>数组的非空子序列是通过删除原数组中某些元素（可能一个也不删除）后剩余数字组成的序列，但不能改变数字间相对顺序。比方说，[2,3,5] 是 [1,2,3,4,5] 的一个子序列而 [1,5,3] 不是。</p>
-<h3 id="示例："><a href="#示例：" class="headerlink" title="示例："></a>示例：</h3><p>示例 1：</p>
-<pre><code>输入：nums1 = [2,1,-2,5], nums2 = [3,0,-6]
-输出：18
-解释：从 nums1 中得到子序列 [2,-2] ，从 nums2 中得到子序列 [3,-6] 。
-它们的点积为 (2*3 + (-2)*(-6)) = 18 。
-</code></pre><p>示例 2：</p>
-<pre><code>输入：nums1 = [3,-2], nums2 = [2,-6,7]
-输出：21
-解释：从 nums1 中得到子序列 [3] ，从 nums2 中得到子序列 [7] 。
-它们的点积为 (3*7) = 21 。
-</code></pre><p>示例 3：</p>
-<pre><code>输入：nums1 = [-1,-1], nums2 = [1,1]
-输出：-1
-解释：从 nums1 中得到子序列 [-1] ，从 nums2 中得到子序列 [1] 。
-它们的点积为 -1 。
-</code></pre><h3 id="提示："><a href="#提示：" class="headerlink" title="提示："></a>提示：</h3><ul>
-<li>1 &lt;= nums1.length, nums2.length &lt;= 500</li>
-<li>-1000 &lt;= nums1[i], nums2[i] &lt;= 100</li>
-</ul>
-<h3 id="分析："><a href="#分析：" class="headerlink" title="分析："></a>分析：</h3><p>动态规划</p>
-<p>dp[i][j] nums1到第i位，nums2到第j位时的最大点积</p>
-<p>状态转移方程：dp[i][j] = max(dp[i-1][j-1] + nums1[i-1] * nums2[j-1], max(dp[i-1][j], dp[i][j-1]));</p>
-<h3 id="代码："><a href="#代码：" class="headerlink" title="代码："></a>代码：</h3><pre><code>class Solution {
-public:
-    int maxDotProduct(vector&lt;int&gt;&amp; nums1, vector&lt;int&gt;&amp; nums2) {
-        vector&lt;vector&lt;int&gt;&gt; dp(nums1.size()+1, vector&lt;int&gt;(nums2.size()+1, 0));
-        int ret = INT_MIN;
-        for(int i = 1; i &lt;= nums1.size(); i++){
-            for(int j = 1; j &lt;= nums2.size(); j++){
-                dp[i][j] = max(dp[i-1][j-1] + nums1[i-1] * nums2[j-1], max(dp[i-1][j], dp[i][j-1]));
-                ret = ret &gt; dp[i-1][j-1] + nums1[i-1] * nums2[j-1] ? ret : dp[i-1][j-1] + nums1[i-1] * nums2[j-1];
-            }
-        }
-        return ret;
-    }
-};
-</code></pre><blockquote>
-<p>题目地址:<a href="https://leetcode-cn.com/problems/max-dot-product-of-two-subsequences/" target="_blank" rel="noopener">https://leetcode-cn.com/problems/max-dot-product-of-two-subsequences/</a></p>
-</blockquote>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.flyingkw.com/2020/05/25/leetcode 5418. 二叉树中的伪回文路径/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="张珂玮">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="张珂玮的博客">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2020/05/25/leetcode 5418. 二叉树中的伪回文路径/" class="post-title-link" itemprop="url">leetcode 5418. 二叉树中的伪回文路径</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2020-05-25 11:43:03 / 修改时间：11:48:22" itemprop="dateCreated datePublished" datetime="2020-05-25T11:43:03+08:00">2020-05-25</time>
-            
-
-            
-              
-
-              
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/leetcode题目/" itemprop="url" rel="index"><span itemprop="name">leetcode题目</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-            
-              
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-            
-                <span class="post-meta-item-text">评论数：</span>
-                <a href="/2020/05/25/leetcode 5418. 二叉树中的伪回文路径/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2020/05/25/leetcode 5418. 二叉树中的伪回文路径/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h3 id="题目："><a href="#题目：" class="headerlink" title="题目："></a>题目：</h3><p>给你一棵二叉树，每个节点的值为 1 到 9 。我们称二叉树中的一条路径是 「伪回文」的，当它满足：路径经过的所有节点值的排列中，存在一个回文序列。</p>
-<p>请你返回从根到叶子节点的所有路径中 伪回文 路径的数目。</p>
-<h3 id="示例："><a href="#示例：" class="headerlink" title="示例："></a>示例：</h3><p>示例 1：</p>
-<pre><code>输入：root = [2,3,1,3,1,null,1]
-输出：2 
-解释：上图为给定的二叉树。总共有 3 条从根到叶子的路径：红色路径 [2,3,3] ，绿色路径 [2,1,1] 和路径 [2,3,1] 。
-     在这些路径中，只有红色和绿色的路径是伪回文路径，因为红色路径 [2,3,3] 存在回文排列 [3,2,3] ，绿色路径 [2,1,1] 存在回文排列 [1,2,1] 。
-</code></pre><p>示例 2：</p>
-<pre><code>输入：root = [2,1,1,1,3,null,null,null,null,null,1]
-输出：1 
-解释：上图为给定二叉树。总共有 3 条从根到叶子的路径：绿色路径 [2,1,1] ，路径 [2,1,3,1] 和路径 [2,1] 。
-     这些路径中只有绿色路径是伪回文路径，因为 [2,1,1] 存在回文排列 [1,2,1] 。
-</code></pre><p>示例 3：</p>
-<pre><code>输入：root = [9]
-输出：1
-</code></pre><h3 id="提示："><a href="#提示：" class="headerlink" title="提示："></a>提示：</h3><ul>
-<li>给定二叉树的节点数目在 1 到 10^5 之间。</li>
-<li>节点值在 1 到 9 之间。</li>
-</ul>
-<h3 id="分析："><a href="#分析：" class="headerlink" title="分析："></a>分析：</h3><p>使用dfs，中途存储经过结点的各个值的数量</p>
-<p>到达叶节点时判断：如果有偶数个结点，存在回文序列的要求为每个值都出现过偶数次；如果有奇数个结点，存在回文序列的要求为有一个值出现奇数次，其他值出现偶数次</p>
-<h3 id="代码："><a href="#代码：" class="headerlink" title="代码："></a>代码：</h3><pre><code>/**
- * Definition for a binary tree node.
- * struct TreeNode {
- *     int val;
- *     TreeNode *left;
- *     TreeNode *right;
- *     TreeNode() : val(0), left(nullptr), right(nullptr) {}
- *     TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}
- *     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
- * };
- */
-class Solution {
-private:
-    int ret;
-public:
-    void dfs(TreeNode* root, vector&lt;int&gt; v){
-        v[root-&gt;val]++;
-        if(root -&gt; left != NULL){
-            dfs(root-&gt;left, v);
-        }
-        if(root -&gt; right != NULL){
-            dfs(root-&gt;right, v);
-        }
-        if(root -&gt; left == NULL &amp;&amp; root -&gt; right == NULL){
-            int z = 0;
-            int x = 0;
-            for(int i = 0; i &lt; v.size(); i++){
-                x += v[i];
-                if(v[i] % 2 == 1) z++;
-            }
-            if(x % 2 == 0 &amp;&amp; z == 0){
-                ret++;
-            }
-            else if(x % 2 == 1 &amp;&amp; z &lt; 2){
-                ret++;
-            }
-        }
-    }
-    int pseudoPalindromicPaths (TreeNode* root) {
-        ret = 0;
-        vector&lt;int&gt; v(10, 0);
-        dfs(root, v);
-        return ret;
-    }
-};
-</code></pre><blockquote>
-<p>题目地址:<a href="https://leetcode-cn.com/problems/pseudo-palindromic-paths-in-a-binary-tree/" target="_blank" rel="noopener">https://leetcode-cn.com/problems/pseudo-palindromic-paths-in-a-binary-tree/</a></p>
-</blockquote>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.flyingkw.com/2020/05/25/leetcode 5417. 定长子串中元音的最大数目/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="张珂玮">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="张珂玮的博客">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2020/05/25/leetcode 5417. 定长子串中元音的最大数目/" class="post-title-link" itemprop="url">leetcode 5417. 定长子串中元音的最大数目</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2020-05-25 11:25:02 / 修改时间：11:48:22" itemprop="dateCreated datePublished" datetime="2020-05-25T11:25:02+08:00">2020-05-25</time>
-            
-
-            
-              
-
-              
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/leetcode题目/" itemprop="url" rel="index"><span itemprop="name">leetcode题目</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-            
-              
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-            
-                <span class="post-meta-item-text">评论数：</span>
-                <a href="/2020/05/25/leetcode 5417. 定长子串中元音的最大数目/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2020/05/25/leetcode 5417. 定长子串中元音的最大数目/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h3 id="题目："><a href="#题目：" class="headerlink" title="题目："></a>题目：</h3><p>给你字符串 s 和整数 k 。</p>
-<p>请返回字符串 s 中长度为 k 的单个子字符串中可能包含的最大元音字母数。</p>
-<p>英文中的 元音字母 为（a, e, i, o, u）。</p>
-<h3 id="示例："><a href="#示例：" class="headerlink" title="示例："></a>示例：</h3><p>示例 1：</p>
-<pre><code>输入：s = &quot;abciiidef&quot;, k = 3
-输出：3
-解释：子字符串 &quot;iii&quot; 包含 3 个元音字母。
-</code></pre><p>示例 2：</p>
-<pre><code>输入：s = &quot;aeiou&quot;, k = 2
-输出：2
-解释：任意长度为 2 的子字符串都包含 2 个元音字母。
-</code></pre><p>示例 3：</p>
-<pre><code>输入：s = &quot;leetcode&quot;, k = 3
-输出：2
-解释：&quot;lee&quot;、&quot;eet&quot; 和 &quot;ode&quot; 都包含 2 个元音字母。
-</code></pre><p>示例 4：</p>
-<pre><code>输入：s = &quot;rhythms&quot;, k = 4
-输出：0
-解释：字符串 s 中不含任何元音字母。
-</code></pre><p>示例 5：</p>
-<pre><code>输入：s = &quot;tryhard&quot;, k = 4
-输出：1
-</code></pre><h3 id="提示："><a href="#提示：" class="headerlink" title="提示："></a>提示：</h3><ul>
-<li>1 &lt;= s.length &lt;= 10^5</li>
-<li>s 由小写英文字母组成</li>
-<li>1 &lt;= k &lt;= s.length</li>
-</ul>
-<h3 id="分析："><a href="#分析：" class="headerlink" title="分析："></a>分析：</h3><p>使用滑动窗口来统计长度为k内的最大元音字母数</p>
-<h3 id="代码："><a href="#代码：" class="headerlink" title="代码："></a>代码：</h3><pre><code>class Solution {
-public:
-    int maxVowels(string s, int k) {
-        int z = 0;
-        int ret = 0;
-        for(int l = 0, r = 0; r &lt; s.size(); r++){
-            if(s[r] == &apos;a&apos;) z++;
-            else if(s[r] == &apos;e&apos;) z++;
-            else if(s[r] == &apos;i&apos;) z++;
-            else if(s[r] == &apos;o&apos;) z++;
-            else if(s[r] == &apos;u&apos;) z++;
-            if(r - l &gt;= k){
-                if(s[l] == &apos;a&apos;) z--;
-                else if(s[l] == &apos;e&apos;) z--;
-                else if(s[l] == &apos;i&apos;) z--;
-                else if(s[l] == &apos;o&apos;) z--;
-                else if(s[l] == &apos;u&apos;) z--;
-                l++;
-            }
-            ret = max(z &lt; k ? z:k, ret);
-        }
-        return ret;
-    }
-};
-</code></pre><blockquote>
-<p>题目地址:<a href="https://leetcode-cn.com/problems/maximum-number-of-vowels-in-a-substring-of-given-length/" target="_blank" rel="noopener">https://leetcode-cn.com/problems/maximum-number-of-vowels-in-a-substring-of-given-length/</a></p>
-</blockquote>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.flyingkw.com/2020/05/25/leetcode 5416. 检查单词是否为句中其他单词的前缀/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="张珂玮">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="张珂玮的博客">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2020/05/25/leetcode 5416. 检查单词是否为句中其他单词的前缀/" class="post-title-link" itemprop="url">leetcode 5416. 检查单词是否为句中其他单词的前缀</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2020-05-25 11:03:01 / 修改时间：11:48:22" itemprop="dateCreated datePublished" datetime="2020-05-25T11:03:01+08:00">2020-05-25</time>
-            
-
-            
-              
-
-              
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/leetcode题目/" itemprop="url" rel="index"><span itemprop="name">leetcode题目</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-            
-              
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-            
-                <span class="post-meta-item-text">评论数：</span>
-                <a href="/2020/05/25/leetcode 5416. 检查单词是否为句中其他单词的前缀/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2020/05/25/leetcode 5416. 检查单词是否为句中其他单词的前缀/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h3 id="题目："><a href="#题目：" class="headerlink" title="题目："></a>题目：</h3><p>给你一个字符串 sentence 作为句子并指定检索词为 searchWord ，其中句子由若干用 单个空格 分隔的单词组成。</p>
-<p>请你检查检索词 searchWord 是否为句子 sentence 中任意单词的前缀。</p>
-<ul>
-<li>如果 searchWord 是某一个单词的前缀，则返回句子 sentence 中该单词所对应的下标（下标从 1 开始）。</li>
-<li>如果 searchWord 是多个单词的前缀，则返回匹配的第一个单词的下标（最小下标）。</li>
-<li>如果 searchWord 不是任何单词的前缀，则返回 -1 。</li>
-</ul>
-<p>字符串 S 的 「前缀」是 S 的任何前导连续子字符串。</p>
-<h3 id="示例："><a href="#示例：" class="headerlink" title="示例："></a>示例：</h3><p>示例 1：</p>
-<pre><code>输入：sentence = &quot;i love eating burger&quot;, searchWord = &quot;burg&quot;
-输出：4
-解释：&quot;burg&quot; 是 &quot;burger&quot; 的前缀，而 &quot;burger&quot; 是句子中第 4 个单词。
-</code></pre><p>示例 2：</p>
-<pre><code>输入：sentence = &quot;this problem is an easy problem&quot;, searchWord = &quot;pro&quot;
-输出：2
-解释：&quot;pro&quot; 是 &quot;problem&quot; 的前缀，而 &quot;problem&quot; 是句子中第 2 个也是第 6 个单词，但是应该返回最小下标 2 。
-</code></pre><p>示例 3：</p>
-<pre><code>输入：sentence = &quot;i am tired&quot;, searchWord = &quot;you&quot;
-输出：-1
-解释：&quot;you&quot; 不是句子中任何单词的前缀。
-</code></pre><p>示例 4：</p>
-<pre><code>输入：sentence = &quot;i use triple pillow&quot;, searchWord = &quot;pill&quot;
-输出：4
-</code></pre><p>示例 5：</p>
-<pre><code>输入：sentence = &quot;hello from the other side&quot;, searchWord = &quot;they&quot;
-输出：-1
-</code></pre><h3 id="提示："><a href="#提示：" class="headerlink" title="提示："></a>提示：</h3><ul>
-<li>1 &lt;= sentence.length &lt;= 100</li>
-<li>1 &lt;= searchWord.length &lt;= 10</li>
-<li>sentence 由小写英文字母和空格组成。</li>
-<li>searchWord 由小写英文字母组成。</li>
-<li>前缀就是紧密附着于词根的语素，中间不能插入其它成分，并且它的位置是固定的——-位于词根之前。（引用自 前缀_百度百科 ）</li>
-</ul>
-<h3 id="分析："><a href="#分析：" class="headerlink" title="分析："></a>分析：</h3><p>直接遍历，以遇到空格来分隔</p>
-<p>注意得是前缀，可以通过同时对两个字符串计数来保证是否是前缀</p>
-<h3 id="代码："><a href="#代码：" class="headerlink" title="代码："></a>代码：</h3><pre><code>class Solution {
-public:
-    int isPrefixOfWord(string sentence, string searchWord) {
-        int z = 1;
-        for(int i = 0, j = 0, k = 0; i &lt; sentence.size(); i++){
-            k++;
-            if(sentence[i] == &apos; &apos;) {
-                z++;
-                k = 0;
-            }
-            if(sentence[i] == searchWord[j]){
-                j++;
-                if(j == searchWord.size() &amp;&amp; k == j){
-                    return z;
-                }
-            }
-            else {
-                j = 0;
-            }
-        }
-        return -1;
-    }
-};
-</code></pre><blockquote>
-<p>题目地址:<a href="https://leetcode-cn.com/problems/check-if-a-word-occurs-as-a-prefix-of-any-word-in-a-sentence/" target="_blank" rel="noopener">https://leetcode-cn.com/problems/check-if-a-word-occurs-as-a-prefix-of-any-word-in-a-sentence/</a></p>
-</blockquote>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.flyingkw.com/2020/05/18/leetcode 5415. 圆形靶内的最大飞镖数量/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="张珂玮">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="张珂玮的博客">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2020/05/18/leetcode 5415. 圆形靶内的最大飞镖数量/" class="post-title-link" itemprop="url">leetcode 5415. 圆形靶内的最大飞镖数量</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2020-05-18 11:11:04 / 修改时间：11:50:35" itemprop="dateCreated datePublished" datetime="2020-05-18T11:11:04+08:00">2020-05-18</time>
-            
-
-            
-              
-
-              
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/leetcode题目/" itemprop="url" rel="index"><span itemprop="name">leetcode题目</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-            
-              
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-            
-                <span class="post-meta-item-text">评论数：</span>
-                <a href="/2020/05/18/leetcode 5415. 圆形靶内的最大飞镖数量/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2020/05/18/leetcode 5415. 圆形靶内的最大飞镖数量/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h3 id="题目："><a href="#题目：" class="headerlink" title="题目："></a>题目：</h3><p>墙壁上挂着一个圆形的飞镖靶。现在请你蒙着眼睛向靶上投掷飞镖。</p>
-<p>投掷到墙上的飞镖用二维平面上的点坐标数组表示。飞镖靶的半径为 r 。</p>
-<p>请返回能够落在 任意 半径为 r 的圆形靶内或靶上的最大飞镖数。</p>
-<h3 id="示例："><a href="#示例：" class="headerlink" title="示例："></a>示例：</h3><p>示例 1：</p>
-<pre><code>输入：points = [[-2,0],[2,0],[0,2],[0,-2]], r = 2
-输出：4
-解释：如果圆形的飞镖靶的圆心为 (0,0) ，半径为 2 ，所有的飞镖都落在靶上，此时落在靶上的飞镖数最大，值为 4 。
-</code></pre><p>示例 2：</p>
-<pre><code>输入：points = [[-3,0],[3,0],[2,6],[5,4],[0,9],[7,8]], r = 5
-输出：5
-解释：如果圆形的飞镖靶的圆心为 (0,4) ，半径为 5 ，则除了 (7,8) 之外的飞镖都落在靶上，此时落在靶上的飞镖数最大，值为 5 。
-</code></pre><p>示例 3：</p>
-<pre><code>输入：points = [[-2,0],[2,0],[0,2],[0,-2]], r = 1
-输出：1
-</code></pre><p>示例 4：</p>
-<pre><code>输入：points = [[1,2],[3,5],[1,-1],[2,3],[4,1],[1,3]], r = 2
-输出：4
-</code></pre><h3 id="提示："><a href="#提示：" class="headerlink" title="提示："></a>提示：</h3><ul>
-<li>1 &lt;= points.length &lt;= 100</li>
-<li>points[i].length == 2</li>
-<li>-10^4 &lt;= points[i][0], points[i][1] &lt;= 10^4</li>
-<li>1 &lt;= r &lt;= 5000</li>
-</ul>
-<h3 id="分析："><a href="#分析：" class="headerlink" title="分析："></a>分析：</h3><p>每两个点画圆可以画出两个圆</p>
-<p>对所有的点遍历，画出所有可能的圆</p>
-<p>判断每个圆中最多的点数</p>
-<blockquote>
-<p>方法来自：<a href="https://www.bilibili.com/video/BV12z4y1R7GW?p=5" target="_blank" rel="noopener">https://www.bilibili.com/video/BV12z4y1R7GW?p=5</a></p>
-</blockquote>
-<h3 id="代码："><a href="#代码：" class="headerlink" title="代码："></a>代码：</h3><pre><code>class Solution {
-public:
-    int check(vector&lt;vector&lt;int&gt;&gt;&amp; points, double xc, double yc, int r){
-        int ret = 0;
-        for(int i = 0; i &lt; points.size(); i++){
-            if((points[i][0] - xc) * (points[i][0] - xc) + (points[i][1] - yc) * (points[i][1] - yc) &lt; r * r + 1e-7){
-                ret++;
-            }
-        }
-        return ret;
-    }
-    int numPoints(vector&lt;vector&lt;int&gt;&gt;&amp; points, int r) {
-        int ret = 1;
-        for(int i = 0; i &lt; points.size(); i++){
-            int x1 = points[i][0];
-            int y1 = points[i][1];
-            for(int j = i+1; j &lt; points.size(); j++){
-                int x2 = points[j][0];
-                int y2 = points[j][1];
-                int d2 = (x2 - x1) * (x2 - x1) + (y2 - y1) * (y2 - y1);
-                if(d2 &gt; r * r * 4) continue;
-                double xm = (x1 + x2) / 2.0;
-                double ym = (y1 + y2) / 2.0;
-                double d = sqrt(d2);
-                double q = sqrt(r * r - d2 / 4.0);
-
-                double v1 = x1 - x2;
-                double v2 = y1 - y2;
-
-                double xc = xm - v2 / d * q;
-                double yc = ym + v1 / d * q;
-                ret = max(ret, check(points, xc, yc, r));
-
-                xc = xm + v2 / d * q;
-                yc = ym - v1 / d * q;
-                ret = max(ret, check(points, xc, yc, r));
-            }
-        }
-        return ret;
-    }
-};
-</code></pre><blockquote>
-<p>题目地址:<a href="https://leetcode-cn.com/problems/maximum-number-of-darts-inside-of-a-circular-dartboard/" target="_blank" rel="noopener">https://leetcode-cn.com/problems/maximum-number-of-darts-inside-of-a-circular-dartboard/</a></p>
-</blockquote>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.flyingkw.com/2020/05/18/leetcode 5414. 收藏清单/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="张珂玮">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="张珂玮的博客">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2020/05/18/leetcode 5414. 收藏清单/" class="post-title-link" itemprop="url">leetcode 5414. 收藏清单</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2020-05-18 10:38:02 / 修改时间：11:06:58" itemprop="dateCreated datePublished" datetime="2020-05-18T10:38:02+08:00">2020-05-18</time>
-            
-
-            
-              
-
-              
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/leetcode题目/" itemprop="url" rel="index"><span itemprop="name">leetcode题目</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-            
-              
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-            
-                <span class="post-meta-item-text">评论数：</span>
-                <a href="/2020/05/18/leetcode 5414. 收藏清单/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2020/05/18/leetcode 5414. 收藏清单/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h3 id="题目："><a href="#题目：" class="headerlink" title="题目："></a>题目：</h3><p>给你一个数组 favoriteCompanies ，其中 favoriteCompanies[i] 是第 i 名用户收藏的公司清单（下标从 0 开始）。</p>
-<p>请找出不是其他任何人收藏的公司清单的子集的收藏清单，并返回该清单下标。下标需要按升序排列。</p>
-<h3 id="示例："><a href="#示例：" class="headerlink" title="示例："></a>示例：</h3><p>示例 1：</p>
-<pre><code>输入：favoriteCompanies = [[&quot;leetcode&quot;,&quot;google&quot;,&quot;facebook&quot;],[&quot;google&quot;,&quot;microsoft&quot;],[&quot;google&quot;,&quot;facebook&quot;],[&quot;google&quot;],[&quot;amazon&quot;]]
-输出：[0,1,4] 
-解释：
-favoriteCompanies[2]=[&quot;google&quot;,&quot;facebook&quot;] 是 favoriteCompanies[0]=[&quot;leetcode&quot;,&quot;google&quot;,&quot;facebook&quot;] 的子集。
-favoriteCompanies[3]=[&quot;google&quot;] 是 favoriteCompanies[0]=[&quot;leetcode&quot;,&quot;google&quot;,&quot;facebook&quot;] 和 favoriteCompanies[1]=[&quot;google&quot;,&quot;microsoft&quot;] 的子集。
-其余的收藏清单均不是其他任何人收藏的公司清单的子集，因此，答案为 [0,1,4] 。
-</code></pre><p>示例 2：</p>
-<pre><code>输入：favoriteCompanies = [[&quot;leetcode&quot;,&quot;google&quot;,&quot;facebook&quot;],[&quot;leetcode&quot;,&quot;amazon&quot;],[&quot;facebook&quot;,&quot;google&quot;]]
-输出：[0,1] 
-解释：favoriteCompanies[2]=[&quot;facebook&quot;,&quot;google&quot;] 是 favoriteCompanies[0]=[&quot;leetcode&quot;,&quot;google&quot;,&quot;facebook&quot;] 的子集，因此，答案为 [0,1] 。
-</code></pre><p>示例 3：</p>
-<pre><code>输入：favoriteCompanies = [[&quot;leetcode&quot;],[&quot;google&quot;],[&quot;facebook&quot;],[&quot;amazon&quot;]]
-输出：[0,1,2,3]
-</code></pre><h3 id="提示："><a href="#提示：" class="headerlink" title="提示："></a>提示：</h3><ul>
-<li>1 &lt;= favoriteCompanies.length &lt;= 100</li>
-<li>1 &lt;= favoriteCompanies[i].length &lt;= 500</li>
-<li>1 &lt;= favoriteCompanies[i][j].length &lt;= 20</li>
-<li>favoriteCompanies[i] 中的所有字符串 各不相同 。</li>
-<li>用户收藏的公司清单也 各不相同 ，也就是说，即便我们按字母顺序排序每个清单， favoriteCompanies[i] != favoriteCompanies[j] 仍然成立。</li>
-<li>所有字符串仅包含小写英文字母。</li>
-</ul>
-<h3 id="分析："><a href="#分析：" class="headerlink" title="分析："></a>分析：</h3><p>可以使用unordered_map来存储用户收藏的公司清单<br>之后每两个用户之间的清单进行比较即可</p>
-<blockquote>
-<p>或者可以照这个方法来：<a href="https://leetcode-cn.com/problems/people-whose-list-of-favorite-companies-is-not-a-subset-of-another-list/solution/favorite-companies-by-ikaruga/" target="_blank" rel="noopener">https://leetcode-cn.com/problems/people-whose-list-of-favorite-companies-is-not-a-subset-of-another-list/solution/favorite-companies-by-ikaruga/</a></p>
-</blockquote>
-<h3 id="代码："><a href="#代码：" class="headerlink" title="代码："></a>代码：</h3><pre><code>class Solution {
-public:
-    vector&lt;int&gt; peopleIndexes(vector&lt;vector&lt;string&gt;&gt;&amp; favoriteCompanies) {
-        unordered_map&lt;string, int&gt; vm[100];
-        vector&lt;int&gt; ret;
-        for(int i = 0; i &lt; favoriteCompanies.size(); i++){
-            for(int j = 0; j &lt; favoriteCompanies[i].size(); j++){
-                vm[i][favoriteCompanies[i][j]] = 1;
-            }
-        }
-        for(int i = 0; i &lt; favoriteCompanies.size(); i++){
-            bool b = true;
-            for(int j = 0; j &lt; favoriteCompanies.size() &amp;&amp; b; j++){
-                if(i == j) continue;
-                int k = 0;
-                for(; k &lt; favoriteCompanies[i].size(); k++){
-                    if(vm[j][favoriteCompanies[i][k]] == 0){
-                        break;
-                    }
-                }
-                if(k == favoriteCompanies[i].size() &amp;&amp; vm[j][favoriteCompanies[i][k-1]] != 0){
-                    b = false;
-                }
-            }
-            if(b) ret.push_back(i);
-        }
-        return ret;
-    }
-};
-</code></pre><blockquote>
-<p>题目地址:<a href="https://leetcode-cn.com/problems/people-whose-list-of-favorite-companies-is-not-a-subset-of-another-list/solution/favorite-companies-by-ikaruga/" target="_blank" rel="noopener">https://leetcode-cn.com/problems/people-whose-list-of-favorite-companies-is-not-a-subset-of-another-list/solution/favorite-companies-by-ikaruga/</a></p>
-</blockquote>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.flyingkw.com/2020/05/18/leetcode 5413. 重新排列句子中的单词/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="张珂玮">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="张珂玮的博客">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2020/05/18/leetcode 5413. 重新排列句子中的单词/" class="post-title-link" itemprop="url">leetcode 5413. 重新排列句子中的单词</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2020-05-18 10:00:02 / 修改时间：10:03:22" itemprop="dateCreated datePublished" datetime="2020-05-18T10:00:02+08:00">2020-05-18</time>
-            
-
-            
-              
-
-              
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/leetcode题目/" itemprop="url" rel="index"><span itemprop="name">leetcode题目</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-            
-              
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-            
-                <span class="post-meta-item-text">评论数：</span>
-                <a href="/2020/05/18/leetcode 5413. 重新排列句子中的单词/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2020/05/18/leetcode 5413. 重新排列句子中的单词/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h3 id="题目："><a href="#题目：" class="headerlink" title="题目："></a>题目：</h3><p>「句子」是一个用空格分隔单词的字符串。给你一个满足下述格式的句子 text :</p>
-<p>句子的首字母大写<br>text 中的每个单词都用单个空格分隔。<br>请你重新排列 text 中的单词，使所有单词按其长度的升序排列。如果两个单词的长度相同，则保留其在原句子中的相对顺序。</p>
-<p>请同样按上述格式返回新的句子。</p>
-<h3 id="示例："><a href="#示例：" class="headerlink" title="示例："></a>示例：</h3><p>示例 1：</p>
-<pre><code>输入：text = &quot;Leetcode is cool&quot;
-输出：&quot;Is cool leetcode&quot;
-解释：句子中共有 3 个单词，长度为 8 的 &quot;Leetcode&quot; ，长度为 2 的 &quot;is&quot; 以及长度为 4 的 &quot;cool&quot; 。
-输出需要按单词的长度升序排列，新句子中的第一个单词首字母需要大写。
-</code></pre><p>示例 2：</p>
-<pre><code>输入：text = &quot;Keep calm and code on&quot;
-输出：&quot;On and keep calm code&quot;
-解释：输出的排序情况如下：
-&quot;On&quot; 2 个字母。
-&quot;and&quot; 3 个字母。
-&quot;keep&quot; 4 个字母，因为存在长度相同的其他单词，所以它们之间需要保留在原句子中的相对顺序。
-&quot;calm&quot; 4 个字母。
-&quot;code&quot; 4 个字母。
-</code></pre><p>示例 3：</p>
-<pre><code>输入：text = &quot;To be or not to be&quot;
-输出：&quot;To be or to be not&quot;
-</code></pre><h3 id="提示："><a href="#提示：" class="headerlink" title="提示："></a>提示：</h3><ul>
-<li>text 以大写字母开头，然后包含若干小写字母以及单词间的单个空格。</li>
-<li>1 &lt;= text.length &lt;= 10^5</li>
-</ul>
-<h3 id="分析："><a href="#分析：" class="headerlink" title="分析："></a>分析：</h3><p>先将所有的单词变成小写后存储<br>按题目要求排序后输出，注意第一个改成大写</p>
-<h3 id="代码："><a href="#代码：" class="headerlink" title="代码："></a>代码：</h3><pre><code>struct t{
-    string str;
-    int i;
-};
-bool b(t t1, t t2){
-    if(t1.str.size() &lt; t2.str.size()) return true;
-    if(t1.str.size() &gt; t2.str.size()) return false;
-    if(t1.i &lt; t2.i) return true;
-    return false;
-}
-class Solution {
-
-public:
-    string arrangeWords(string text) {
-        vector&lt;t&gt; v;
-        string s = &quot;&quot;;
-        text[0] = text[0] - (&apos;A&apos; - &apos;a&apos;);
-        for(int i = 0; i &lt; text.size(); i++){
-            if(text[i] == &apos; &apos;){
-                t t1 = {s, i};
-                v.push_back(t1);
-                s = &quot;&quot;;
-            }
-            else{
-                s += text[i]; 
-            }
-        }
-        t t1 = {s, int(text.size()-1)};
-        v.push_back(t1);
-        sort(v.begin(), v.end(), b);
-        string ret = &quot;&quot;;
-        for(int i = 0; i &lt; v.size(); i++){
-            if(i == 0){
-                v[i].str[0] = v[i].str[0] + (&apos;A&apos; - &apos;a&apos;);
-            }
-            ret += v[i].str;
-            ret += &quot; &quot;;
-        }
-        ret.pop_back();
-        return ret;
-    }
-};
-</code></pre><blockquote>
-<p>题目地址:<a href="https://leetcode-cn.com/problems/rearrange-words-in-a-sentence/" target="_blank" rel="noopener">https://leetcode-cn.com/problems/rearrange-words-in-a-sentence/</a></p>
-</blockquote>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/7/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/7/">7</a><span class="page-number current">8</span><a class="page-number" href="/page/9/">9</a><span class="space">&hellip;</span><a class="page-number" href="/page/30/">30</a><a class="extend next" rel="next" href="/page/9/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+    <a class="extend prev" rel="prev" href="/page/7/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/7/">7</a><span class="page-number current">8</span><a class="page-number" href="/page/9/">9</a><span class="space">&hellip;</span><a class="page-number" href="/page/31/">31</a><a class="extend next" rel="next" href="/page/9/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
   </nav>
 
 
@@ -2708,7 +2768,7 @@ public:
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">295</span>
+                    <span class="site-state-item-count">303</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
